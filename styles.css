@@ -1,0 +1,87 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 1, ../sass/_intro.scss */
+body {
+  background-color: #fdffee;
+  font-size: 16px;
+}
+
+/* line 6, ../sass/_intro.scss */
+header#intro {
+  text-align: center;
+}
+/* line 9, ../sass/_intro.scss */
+header#intro h1 {
+  color: #fdffee;
+  margin: 0;
+  padding: .3em;
+  font-size: 3rem;
+}
+/* line 16, ../sass/_intro.scss */
+header#intro #banner-img {
+  background-color: #333333;
+}
+/* line 20, ../sass/_intro.scss */
+header#intro img {
+  margin: 0 auto 25px;
+  border-radius: 15px;
+}
+
+/* line 26, ../sass/_intro.scss */
+main#intro {
+  display: block;
+  max-width: 55rem;
+  margin: 0 auto;
+  padding: 1rem 0;
+  text-align: center;
+  border-radius: 15px;
+}
+/* line 35, ../sass/_intro.scss */
+main#intro h1 {
+  margin: 0;
+  font-size: 3rem;
+  padding: 15px;
+}
+/* line 41, ../sass/_intro.scss */
+main#intro h2 {
+  margin: 0;
+  font-size: 1.75rem;
+  padding: 0;
+}
+/* line 47, ../sass/_intro.scss */
+main#intro h3 {
+  margin: 0 0 1.3em 0;
+  font-size: 1.4rem;
+  padding: .5em;
+  border-bottom: solid 1px #333333;
+}
+/* line 54, ../sass/_intro.scss */
+main#intro p {
+  margin: 0;
+  padding: 1em 0;
+  font-size: 1.2rem;
+  text-align: left;
+}
+/* line 61, ../sass/_intro.scss */
+main#intro .btn {
+  display: inline-block;
+  margin: 1.5rem;
+  padding: 1rem;
+  vertical-align: bottom;
+  background-color: #ffdd88;
+  text-decoration: none;
+  border: 2px solid #930;
+  border-radius: 15px;
+  color: #000000;
+  font-weight: 900;
+  font-size: 1.4rem;
+}
+
+/* line 76, ../sass/_intro.scss */
+footer#intro {
+  text-align: center;
+  margin: 0;
+  padding: 5em 0;
+}
