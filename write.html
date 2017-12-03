@@ -13,33 +13,56 @@
     <link href="styles.css" rel="stylesheet">
   </head>
   <body>
-    <div id="top">
-      <a class="btn" href="#" id="skip-to-text">Skip to Text</a>
-      <a href="#" id="help" role="button">Help</a>
-      <a class="btn font-size" href="#" id="plus" role="button">+</a>
-      <a class="btn font-size" href="#" id="minus" role="button">-</a>
-      <a href="#" id="color-options" role="button">Color Options</a>
-    </div>
-    <main role="main">
+    <header id="top">
+      <img alt="pencil" id="logo" src="images/wts-pencil2.svg">
       <h1>Write to Speak</h1>
+    </header>
+    <nav>
+      <a href="x" id="menu">Menu</a>
+      <a class="btn" href="#" id="close-navi">X</a>
+      <ul>
+        <li>
+          <a href="#" id="help" role="button">Help</a>
+        </li>
+        <li>
+          <a class="btn font-size" href="#" id="plus" role="button">+</a>
+        </li>
+        <li>
+          <a class="btn font-size" href="#" id="minus" role="button">-</a>
+        </li>
+        <li>
+          <a href="#" id="color-options" role="button">Color Options</a>
+        </li>
+      </ul>
+    </nav>
+    <main id="write" role="main">
       <p id="instructions"></p>
-      <form action="#" id="writing" method="get" name="writing">
-        <input id="write-box" type="textbox">
-        <button class="read" id="read-aloud" name="read-aloud" type="submit" value="Read Aloud">Read Aloud</button>
-        <button class="read" id="misspellings" name="misspellings" type="submit" value="Check Spelling">Check Spelling</button>
-        <button class="read" id="save" name="save" type="submit" value="Save Snippet">Save Snippet</button>
-        <button class="read" id="clear" name="clear" type="submit" value="Clear Writing">Clear Writing</button>
-      </form>
-      <div id="spelling-area">
+      <section id="writing-area">
+        <form action="#" id="writing" method="get" name="writing">
+          <legend>Write in the box below:</legend>
+          <fieldset id="write-box">
+            <textarea name="text" wrap="soft"></textarea>
+          </fieldset>
+          <fieldset id="box-buttons">
+            <button class="read" id="read-aloud" name="read-aloud" type="submit" value="Read Aloud">Read Aloud</button>
+            <button class="read" id="misspellings" name="misspellings" type="submit" value="Check Spelling">Check Spelling</button>
+            <button class="read" id="save" name="save" type="submit" value="Save Snippet">Save Snippet</button>
+            <button class="read" id="clear" name="clear" type="submit" value="Clear Writing">Clear Writing</button>
+          </fieldset>
+        </form>
+      </section>
+      <section id="spelling-area">
         <p id="spelling-info"></p>
         <form action="#" id="spelling-choices" method="get" name="spelling-choices">
           <a class="spelling" href="#" id="more-words" role="button">More</a>
-          <button class="spelling" id="correct" name="correct-spelling" type="submit" value="Correct Spelling">Correct</button>
-          <button class="spelling" id="read-spelling" name="read-spelling-choice" type="submit" value="Read Spelling Choice">Read</button>
-          <button class="spelling" id="meaning" name="meaning" type="submit" value="Meaning">Meaning</button>
+          <fieldset id="spelling-actions">
+            <button class="spelling" id="correct" name="correct-spelling" type="submit" value="Correct Spelling">Correct</button>
+            <button class="spelling" id="read-spelling" name="read-spelling-choice" type="submit" value="Read Spelling Choice">Read</button>
+            <button class="spelling" id="meaning" name="meaning" type="submit" value="Meaning">Meaning</button>
+          </fieldset>
         </form>
-      </div>
-      <div id="snippet-area">
+      </section>
+      <section id="snippet-area">
         <form id="snippet-operations">
           <button class="operation" id="add-writing" name="add-writing" type="submit" value="Add Snippet to Writing">Add Snippet to Writing Window</button>
           <button class="operation" id="edit" name="edit-snippet" type="submit" value="Edit Snippet">Edit Snippet</button>
@@ -47,7 +70,7 @@
           <p id="snippet-info">NOTE: Snippets will be saved in this area when you type in the large box above and then click the “Save Snippet” button above, right. You will then be able to click any saved snippet to have it read aloud to you.</p>
         </form>
         <div id="snippets"></div>
-      </div>
+      </section>
     </main>
     <footer role="contentinfo">
       <address></address>
