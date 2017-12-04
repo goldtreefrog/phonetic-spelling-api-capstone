@@ -10,6 +10,7 @@
     <meta content="Margaret Blauvelt" name="author">
     <title>Write to Speak</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
   </head>
   <body>
@@ -18,20 +19,35 @@
       <h1>Write to Speak</h1>
     </header>
     <nav>
-      <a href="x" id="menu">Menu</a>
+      <a href="x" id="menu">
+        <span aria-hidden="true" class="fa fa-bars"></span> Menu
+      </a>
       <a class="btn" href="#" id="close-navi">X</a>
       <ul>
         <li>
-          <a href="#" id="help" role="button">Help</a>
+          <a href="#" id="help">
+            <span aria-hidden="true" class="fa fa-question-circle"></span> Help
+          </a>
         </li>
         <li>
-          <a class="btn font-size" href="#" id="plus" role="button">+</a>
+          <a href="index.html" id="about">
+            <span aria-hidden="true" class="fa fa-info-circle"></span> About
+          </a>
         </li>
         <li>
-          <a class="btn font-size" href="#" id="minus" role="button">-</a>
+          <a class="btn font-size" href="#" id="plus">
+            <span aria-hidden="true" class="fa fa-search-plus"></span> Zoom in (Ctrl +)
+          </a>
         </li>
         <li>
-          <a href="#" id="color-options" role="button">Color Options</a>
+          <a class="btn font-size" href="#" id="minus">
+            <span aria-hidden="true" class="fa fa-search-minus"></span> Zoom out (Ctrl -)
+          </a>
+        </li>
+        <li>
+          <a href="#" id="color-options">
+            <span aria-hidden="true" class="fa fa-cog"></span> Color Options
+          </a>
         </li>
       </ul>
     </nav>
@@ -39,34 +55,59 @@
       <p id="instructions"></p>
       <section id="writing-area">
         <form action="#" id="writing" method="get" name="writing">
-          <legend>Write in the box below:</legend>
           <fieldset id="write-box">
-            <textarea name="text" wrap="soft"></textarea>
+            <label for="text-box">
+              <span aria-hidden="true" class="fa fa-pencil-square-o"></span> Write in the box:
+            </label>
+            <textarea id="text-box" name="text-box" wrap="soft"></textarea>
           </fieldset>
           <fieldset id="box-buttons">
-            <button class="read" id="read-aloud" name="read-aloud" type="submit" value="Read Aloud">Read Aloud</button>
-            <button class="read" id="misspellings" name="misspellings" type="submit" value="Check Spelling">Check Spelling</button>
-            <button class="read" id="save" name="save" type="submit" value="Save Snippet">Save Snippet</button>
-            <button class="read" id="clear" name="clear" type="submit" value="Clear Writing">Clear Writing</button>
+            <button class="read" id="read-aloud" name="read-aloud" type="submit" value="Read Aloud">
+              <span aria-hidden="true" class="fa fa-bullhorn"></span> Read Aloud
+            </button>
+            <button class="read" id="misspellings" name="misspellings" type="submit" value="Check Spelling">
+              <span aria-hidden="true" class="fa fa-check-square-o"></span> Check Spelling
+            </button>
+            <button class="read" id="save" name="save" type="submit" value="Save Snippet">
+              <span aria-hidden="true" class="fa fa-floppy-o"></span> Save Snippet
+            </button>
+            <button class="read" id="clear" name="clear" type="submit" value="Clear Writing">
+              <span aria-hidden="true" class="fa fa-trash"></span> Delete
+            </button>
           </fieldset>
         </form>
       </section>
       <section id="spelling-area">
         <p id="spelling-info"></p>
         <form action="#" id="spelling-choices" method="get" name="spelling-choices">
-          <a class="spelling" href="#" id="more-words" role="button">More</a>
+          <a class="spelling" href="#" id="more-words" role="button">
+More
+<span aria-hidden="true" class="fa fa-arrow-circle-right"></span>
+</a>
           <fieldset id="spelling-actions">
-            <button class="spelling" id="correct" name="correct-spelling" type="submit" value="Correct Spelling">Correct</button>
-            <button class="spelling" id="read-spelling" name="read-spelling-choice" type="submit" value="Read Spelling Choice">Read</button>
-            <button class="spelling" id="meaning" name="meaning" type="submit" value="Meaning">Meaning</button>
+            <button class="spelling" id="correct" name="correct-spelling" type="submit" value="Correct Spelling">
+              <span aria-hidden="true" class="fa fa-check-square"></span> Correct
+            </button>
+            <button class="spelling" id="read-spelling" name="read-spelling-choice" type="submit" value="Read Spelling Choice">
+              <span aria-hidden="true" class="fa fa-bullhorn"></span> Read
+            </button>
+            <button class="spelling" id="meaning" name="meaning" type="submit" value="Meaning">
+              <span aria-hidden="true" class="fa fa-book"></span> Meaning
+            </button>
           </fieldset>
         </form>
       </section>
       <section id="snippet-area">
         <form id="snippet-operations">
-          <button class="operation" id="add-writing" name="add-writing" type="submit" value="Add Snippet to Writing">Add Snippet to Writing Window</button>
-          <button class="operation" id="edit" name="edit-snippet" type="submit" value="Edit Snippet">Edit Snippet</button>
-          <button class="operation" id="delete" name="delete-snippet" type="submit" value="Delete Snippet">Delete Snippet</button>
+          <button class="operation" id="add-writing" name="add-writing" type="submit" value="Add Snippet to Writing">
+            <span aria-hidden="true" class="fa fa-plus"></span> Add Snippet to Writing Box
+          </button>
+          <button class="operation" id="edit" name="edit-snippet" type="submit" value="Edit Snippet">
+            <span aria-hidden="true" class="fa fa-pencil"></span> Edit Snippet
+          </button>
+          <button class="operation" id="delete" name="delete-snippet" type="submit" value="Delete Snippet">
+            <span aria-hidden="true" class="fa fa-trash"></span> Delete Snippet
+          </button>
           <p id="snippet-info">NOTE: Snippets will be saved in this area when you type in the large box above and then click the “Save Snippet” button above, right. You will then be able to click any saved snippet to have it read aloud to you.</p>
         </form>
         <div id="snippets"></div>
