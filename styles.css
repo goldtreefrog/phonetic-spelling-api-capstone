@@ -1,7 +1,3 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 /* line 1, ../sass/_intro.scss */
 * {
   margin: 0;
@@ -10,7 +6,7 @@
   box-sizing: border-box;
 }
 
-/* line 5, ../sass/_intro.scss */
+/* line 8, ../sass/_intro.scss */
 body {
   background-color: #fdffee;
   font-size: 16px;
@@ -20,28 +16,28 @@ body {
   max-width: 1000px;
 }
 
-/* line 10, ../sass/_intro.scss */
+/* line 17, ../sass/_intro.scss */
 header#intro {
   text-align: center;
 }
-/* line 13, ../sass/_intro.scss */
+/* line 20, ../sass/_intro.scss */
 header#intro h1 {
   color: #fdffee;
   margin: 0;
   padding: .3em;
   font-size: 3rem;
 }
-/* line 20, ../sass/_intro.scss */
+/* line 27, ../sass/_intro.scss */
 header#intro #banner-img {
   background-color: #333333;
 }
-/* line 24, ../sass/_intro.scss */
+/* line 31, ../sass/_intro.scss */
 header#intro img {
   margin: 0 auto 25px;
   border-radius: 15px;
 }
 
-/* line 30, ../sass/_intro.scss */
+/* line 37, ../sass/_intro.scss */
 main#intro {
   display: block;
   max-width: 55rem;
@@ -50,33 +46,33 @@ main#intro {
   text-align: center;
   border-radius: 15px;
 }
-/* line 39, ../sass/_intro.scss */
+/* line 45, ../sass/_intro.scss */
 main#intro h1 {
   margin: 0;
   font-size: 3rem;
   padding: 15px;
 }
-/* line 45, ../sass/_intro.scss */
+/* line 51, ../sass/_intro.scss */
 main#intro h2 {
   margin: 0;
   font-size: 1.75rem;
   padding: 0;
 }
-/* line 51, ../sass/_intro.scss */
+/* line 57, ../sass/_intro.scss */
 main#intro h3 {
   margin: 0 0 1.3em 0;
   font-size: 1.4rem;
   padding: .5em;
   border-bottom: solid 1px #333333;
 }
-/* line 58, ../sass/_intro.scss */
+/* line 64, ../sass/_intro.scss */
 main#intro p {
   margin: 0;
   padding: 1em 0;
   font-size: 1.2rem;
   text-align: left;
 }
-/* line 65, ../sass/_intro.scss */
+/* line 71, ../sass/_intro.scss */
 main#intro .btn {
   display: inline-block;
   margin: 1.5rem;
@@ -91,7 +87,7 @@ main#intro .btn {
   font-size: 1.4rem;
 }
 
-/* line 80, ../sass/_intro.scss */
+/* line 86, ../sass/_intro.scss */
 footer {
   text-align: center;
   margin: 0;
@@ -99,127 +95,134 @@ footer {
 }
 
 /* line 1, ../sass/_write.scss */
+button {
+  background: linear-gradient(#f5e882, #c7ba6b);
+  border: solid 1px #000000;
+  padding: 2px;
+}
+
+/* line 6, ../sass/_write.scss */
+button:hover, button:focus {
+  color: white;
+  background: none;
+  background-color: #423e24;
+}
+
+/* line 12, ../sass/_write.scss */
 header#top {
   text-align: center;
 }
-/* line 4, ../sass/_write.scss */
+/* line 15, ../sass/_write.scss */
 header#top img {
   display: inline-block;
   margin: 0 1.5rem 0 0;
   height: 4rem;
   vertical-align: middle;
 }
-/* line 10, ../sass/_write.scss */
+/* line 21, ../sass/_write.scss */
 header#top h1 {
   display: inline-block;
   margin: 2rem 0 0;
 }
 
-/* line 16, ../sass/_write.scss */
+/* line 27, ../sass/_write.scss */
 nav {
-  /*float: right;*/
-  /*border: solid 1px brown;*/
   width: 100%;
   display: block;
 }
-/* line 19, ../sass/_write.scss */
-nav #menu {
-  float: right;
-  margin: -1rem 15px 0;
-  padding: 2px;
-  text-decoration: none;
-  color: #000000;
-  font-weight: 900;
-  background: linear-gradient(#f5e882, #c7ba6b);
-  /*border: solid 1px #000000;*/
-}
 /* line 31, ../sass/_write.scss */
-nav #close-navi {
-  /*display: none;*/
-}
-/* line 35, ../sass/_write.scss */
 nav ul {
   list-style: none;
 }
-
-nav li {
+/* line 34, ../sass/_write.scss */
+nav ul li {
   display: inline-block;
   width: 18%;
   border-right: 1px solid gray;
 }
-nav li:last-child {
+/* line 39, ../sass/_write.scss */
+nav ul li :last-child {
   border-right: 0;
 }
-
-nav a {
+/* line 44, ../sass/_write.scss */
+nav ul a {
   display: block;
   width: 100%;
   line-height: 2rem;
   text-decoration: none;
-  color: black;
+  color: #000000;
 }
-nav a:hover, nav a:focus {
+/* line 52, ../sass/_write.scss */
+nav ul a:hover, nav ul a:focus {
   color: white;
-  background-color: gray;
+  background-color: #423e24;
 }
-/* line 40, ../sass/_write.scss */
+
+/* line 59, ../sass/_write.scss */
 main#write {
   margin: 2rem 0 0;
 }
-/* line 44, ../sass/_write.scss */
+/* line 63, ../sass/_write.scss */
 main#write form#writing {
   width: 100%;
   padding: 0;
   margin: 0;
 }
-/* line 50, ../sass/_write.scss */
+/* line 68, ../sass/_write.scss */
 main#write form#writing fieldset {
   display: block;
   margin: 0;
   padding: 0;
   float: left;
   width: 28%;
-  border: solid 2px green;
 }
-/* line 59, ../sass/_write.scss */
+/* line 77, ../sass/_write.scss */
 main#write form#writing fieldset#write-box {
   display: inline-block;
   margin: 1.5rem 1%;
   padding: 0;
   width: 70%;
-  /* float: left; */
-  border: solid 2px yellow;
   height: 11rem;
 }
-/* line 68, ../sass/_write.scss */
+/* line 85, ../sass/_write.scss */
 main#write form#writing fieldset#write-box textarea {
   margin: 0;
-  padding: 0;
+  padding: 2px 3px;
   height: 10rem;
   width: 100%;
-  border: solid 2px pink;
+  border: solid 2px #999999;
 }
-/* line 77, ../sass/_write.scss */
+/* line 93, ../sass/_write.scss */
+main#write form#writing fieldset#write-box textarea:hover, main#write form#writing fieldset#write-box textarea:focus {
+  outline: none !important;
+  border: dashed 2px #999999;
+  background-color: white;
+}
+/* line 100, ../sass/_write.scss */
 main#write form#writing fieldset#box-buttons {
   margin: 3rem 0 0 0;
 }
-/* line 83, ../sass/_write.scss */
+/* line 103, ../sass/_write.scss */
+main#write form#writing fieldset#box-buttons button {
+  margin-top: 4px;
+  width: 100%;
+}
+/* line 108, ../sass/_write.scss */
+main#write form#writing fieldset#box-buttons :first-child {
+  margin-top: 0;
+}
+/* line 115, ../sass/_write.scss */
 main#write #spelling-area {
   clear: both;
   text-align: center;
 }
-/* line 88, ../sass/_write.scss */
+/* line 120, ../sass/_write.scss */
 main#write #snippet-area {
   margin: 0 0 0 15px;
 }
 
-/* line 93, ../sass/_write.scss */
-button {
-  background: linear-gradient(#f5e882, #c7ba6b);
-  border: solid 1px #000000;
-}
-
 @media only screen and (max-width: 640px) {
+  /* line 2, ../sass/_media-size.scss */
   nav li {
     display: block;
     width: 95%;
@@ -227,5 +230,4 @@ button {
     margin-right: auto;
     border-right: 0;
   }
-
 }
