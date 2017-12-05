@@ -4,6 +4,9 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 /* line 1, ../sass/_intro.scss */
 * {
+  margin: 0;
+  padding: 0;
+  border: 0;
   box-sizing: border-box;
 }
 
@@ -11,6 +14,10 @@
 body {
   background-color: #fdffee;
   font-size: 16px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
 }
 
 /* line 10, ../sass/_intro.scss */
@@ -110,7 +117,10 @@ header#top h1 {
 
 /* line 16, ../sass/_write.scss */
 nav {
-  float: right;
+  /*float: right;*/
+  /*border: solid 1px brown;*/
+  width: 100%;
+  display: block;
 }
 /* line 19, ../sass/_write.scss */
 nav #menu {
@@ -121,17 +131,37 @@ nav #menu {
   color: #000000;
   font-weight: 900;
   background: linear-gradient(#f5e882, #c7ba6b);
-  border: solid 1px #000000;
+  /*border: solid 1px #000000;*/
 }
 /* line 31, ../sass/_write.scss */
 nav #close-navi {
-  display: none;
+  /*display: none;*/
 }
 /* line 35, ../sass/_write.scss */
 nav ul {
-  display: none;
+  list-style: none;
 }
 
+nav li {
+  display: inline-block;
+  width: 18%;
+  border-right: 1px solid gray;
+}
+nav li:last-child {
+  border-right: 0;
+}
+
+nav a {
+  display: block;
+  width: 100%;
+  line-height: 2rem;
+  text-decoration: none;
+  color: black;
+}
+nav a:hover, nav a:focus {
+  color: white;
+  background-color: gray;
+}
 /* line 40, ../sass/_write.scss */
 main#write {
   margin: 2rem 0 0;
@@ -148,16 +178,16 @@ main#write form#writing fieldset {
   margin: 0;
   padding: 0;
   float: left;
-  width: 9.25rem;
+  width: 28%;
   border: solid 2px green;
 }
 /* line 59, ../sass/_write.scss */
 main#write form#writing fieldset#write-box {
-  display: block;
-  margin: 0 1% 1.5rem;
+  display: inline-block;
+  margin: 1.5rem 1%;
   padding: 0;
-  width: 85%;
-  float: left;
+  width: 70%;
+  /* float: left; */
   border: solid 2px yellow;
   height: 11rem;
 }
@@ -187,4 +217,15 @@ main#write #snippet-area {
 button {
   background: linear-gradient(#f5e882, #c7ba6b);
   border: solid 1px #000000;
+}
+
+@media only screen and (max-width: 640px) {
+  nav li {
+    display: block;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    border-right: 0;
+  }
+
 }
