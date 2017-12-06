@@ -109,18 +109,18 @@ button:hover, button:focus {
 }
 
 /* line 12, ../sass/_write.scss */
-header#top {
+header#top, header#help {
   text-align: center;
 }
 /* line 15, ../sass/_write.scss */
-header#top img {
+header#top img, header#help img {
   display: inline-block;
   margin: 0 1.5rem 0 0;
   height: 4rem;
   vertical-align: middle;
 }
 /* line 21, ../sass/_write.scss */
-header#top h1 {
+header#top h1, header#help h1 {
   display: inline-block;
   margin: 2rem 0 0;
 }
@@ -133,22 +133,22 @@ nav {
 /* line 31, ../sass/_write.scss */
 nav ul {
   list-style: none;
+  margin-top: 5px;
 }
-/* line 34, ../sass/_write.scss */
+/* line 36, ../sass/_write.scss */
 nav ul li {
   display: inline-block;
   width: 18%;
   border-right: 1px solid gray;
 }
-/* line 39, ../sass/_write.scss */
-nav ul li :last-child {
+/* line 41, ../sass/_write.scss */
+nav ul :last-child {
   border-right: 0;
 }
-/* line 44, ../sass/_write.scss */
+/* line 45, ../sass/_write.scss */
 nav ul a {
-  display: block;
+  display: inline-block;
   width: 100%;
-  line-height: 2rem;
   text-decoration: none;
   color: #000000;
 }
@@ -218,7 +218,81 @@ main#write #spelling-area {
 }
 /* line 120, ../sass/_write.scss */
 main#write #snippet-area {
-  margin: 0 0 0 15px;
+  margin: 0 0 0 10px;
+}
+/* line 123, ../sass/_write.scss */
+main#write #snippet-area #snippets {
+  margin: 0 auto;
+  width: 100%;
+}
+/* line 127, ../sass/_write.scss */
+main#write #snippet-area #snippets li {
+  display: inline-block;
+  width: 24%;
+  margin: 0.2rem auto;
+  text-decoration: none;
+  border: 1px solid gray;
+  list-style: none;
+  background-color: #ccccff;
+}
+/* line 136, ../sass/_write.scss */
+main#write #snippet-area #snippets li a {
+  padding: 0.25rem;
+  text-decoration: none;
+  color: #000000;
+  display: inline-block;
+  width: 100%;
+}
+/* line 144, ../sass/_write.scss */
+main#write #snippet-area #snippets li a:hover, main#write #snippet-area #snippets li a:focus {
+  color: white;
+  background-color: #423e24;
+}
+
+/* line 2, ../sass/_help.scss */
+header#help h2 {
+  margin: 1em 0;
+}
+
+/* line 7, ../sass/_help.scss */
+main#help {
+  text-align: left;
+}
+/* line 10, ../sass/_help.scss */
+main#help ul {
+  margin: 1rem 2rem 2rem;
+}
+/* line 13, ../sass/_help.scss */
+main#help ul li {
+  margin-bottom: 0.5em;
+  line-height: 1.2em;
+}
+/* line 19, ../sass/_help.scss */
+main#help h3 {
+  margin: 1em 0;
+}
+/* line 24, ../sass/_help.scss */
+main#help table {
+  margin: 2em;
+  border-spacing: 0;
+  border-collapse: collapse;
+  float: left;
+  width: 18em;
+}
+/* line 30, ../sass/_help.scss */
+main#help table caption {
+  text-align: left;
+  margin-bottom: .5em;
+  height: 2em;
+}
+/* line 36, ../sass/_help.scss */
+main#help table tr {
+  margin: 0;
+}
+/* line 38, ../sass/_help.scss */
+main#help table tr td {
+  padding: .5em 0.5em;
+  border: solid 1px black;
 }
 
 @media only screen and (max-width: 640px) {
@@ -229,5 +303,34 @@ main#write #snippet-area {
     margin-left: auto;
     margin-right: auto;
     border-right: 0;
+  }
+
+  /* line 26, ../sass/_media-size.scss */
+  main#write form#writing fieldset#write-box {
+    margin: 0 0 10px;
+    width: 100%;
+  }
+  /* line 36, ../sass/_media-size.scss */
+  main#write form#writing fieldset#box-buttons {
+    margin-top: 0;
+    padding-top: 0;
+    height: auto;
+    border: solid 1px purple;
+    clear: both;
+    width: 100%;
+  }
+  /* line 53, ../sass/_media-size.scss */
+  main#write #snippet-area {
+    margin: 0;
+  }
+  /* line 56, ../sass/_media-size.scss */
+  main#write #snippet-area .operation {
+    width: 100%;
+    margin: .1rem 0;
+  }
+  /* line 62, ../sass/_media-size.scss */
+  main#write #snippet-area #snippets li {
+    width: 100%;
+    margin: .15rem 0;
   }
 }
