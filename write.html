@@ -20,27 +20,27 @@
       <nav>
         <ul>
           <li>
-            <a href="#" id="help">
+            <a accesskey="h" href="help.html" id="help">
               <span aria-hidden="true" class="fa fa-question-circle"></span> Help
             </a>
           </li>
           <li>
-            <a href="index.html" id="about">
+            <a accesskey="i" href="index.html" id="about">
               <span aria-hidden="true" class="fa fa-info-circle"></span> About
             </a>
           </li>
           <li>
-            <a class="btn font-size" href="#" id="plus">
+            <a accesskey="z" class="btn font-size" href="#" id="plus">
               <span aria-hidden="true" class="fa fa-search-plus"></span> Zoom In
             </a>
           </li>
           <li>
-            <a class="btn font-size" href="#" id="minus">
+            <a accesskey="-" class="btn font-size" href="#" id="minus">
               <span aria-hidden="true" class="fa fa-search-minus"></span> Zoom Out
             </a>
           </li>
           <li>
-            <a href="#" id="color-options">
+            <a accesskey="o" href="#" id="color-options">
               <span aria-hidden="true" class="fa fa-cog"></span> Color Options
             </a>
           </li>
@@ -55,19 +55,19 @@
             <label for="text-box">
               <span aria-hidden="true" class="fa fa-pencil-square-o"></span> Write in the box:
             </label>
-            <textarea id="text-box" name="text-box" wrap="soft"></textarea>
+            <textarea accesskey="w" id="text-box" name="text-box" wrap="soft"></textarea>
           </fieldset>
           <fieldset id="box-buttons">
-            <button class="read" id="read-aloud" name="read-aloud" type="submit" value="Read Aloud">
+            <button accesskey="r" class="read" id="read-aloud" name="read-aloud" type="submit" value="Read Aloud">
               <span aria-hidden="true" class="fa fa-bullhorn"></span> Read Aloud
             </button>
-            <button class="read" id="misspellings" name="misspellings" type="submit" value="Check Spelling">
+            <button accesskey="k" class="read" id="misspellings" name="misspellings" type="submit" value="Check Spelling">
               <span aria-hidden="true" class="fa fa-check-square-o"></span> Check Spelling
             </button>
-            <button class="read" id="save" name="save" type="submit" value="Save Snippet">
+            <button accesskey="s" class="read" id="save" name="save" type="submit" value="Save Snippet">
               <span aria-hidden="true" class="fa fa-floppy-o"></span> Save Snippet
             </button>
-            <button class="read" id="clear" name="clear" type="submit" value="Clear Writing">
+            <button accesskey="l" class="read" id="clear" name="clear" type="submit" value="Clear Writing">
               <span aria-hidden="true" class="fa fa-trash"></span> Delete
             </button>
           </fieldset>
@@ -76,18 +76,18 @@
       <section id="spelling-area">
         <p id="spelling-info"></p>
         <form action="#" id="spelling-choices" method="get" name="spelling-choices">
-          <a class="spelling" href="#" id="more-words" role="button">
+          <a accesskey="m" class="spelling" href="#" id="more-words" role="button">
 More
 <span aria-hidden="true" class="fa fa-arrow-circle-right"></span>
 </a>
           <fieldset id="spelling-actions">
-            <button class="spelling" id="correct" name="correct-spelling" type="submit" value="Correct Spelling">
+            <button accesskey="c" class="spelling" id="correct" name="correct-spelling" type="submit" value="Correct Spelling">
               <span aria-hidden="true" class="fa fa-check-square"></span> Correct
             </button>
-            <button class="spelling" id="read-spelling" name="read-spelling-choice" type="submit" value="Read Spelling Choice">
+            <button accesskey="p" class="spelling" id="read-spelling" name="read-spelling-choice" type="submit" value="Read Spelling Choice">
               <span aria-hidden="true" class="fa fa-bullhorn"></span> Read
             </button>
-            <button class="spelling" id="meaning" name="meaning" type="submit" value="Meaning">
+            <button accesskey="g" class="spelling" id="meaning" name="meaning" type="submit" value="Meaning">
               <span aria-hidden="true" class="fa fa-book"></span> Meaning
             </button>
           </fieldset>
@@ -95,18 +95,44 @@ More
       </section>
       <section id="snippet-area">
         <form id="snippet-operations">
-          <button class="operation" id="add-writing" name="add-writing" type="submit" value="Add Snippet to Writing">
+          <button accesskey="a" class="operation" id="add-writing" name="add-writing" type="submit" value="Add Snippet to Writing">
             <span aria-hidden="true" class="fa fa-plus"></span> Add Snippet to Writing Box
           </button>
-          <button class="operation" id="edit" name="edit-snippet" type="submit" value="Edit Snippet">
+          <button accesskey="n" class="operation" id="edit" name="edit-snippet" type="submit" value="Edit Snippet">
             <span aria-hidden="true" class="fa fa-pencil"></span> Edit Snippet
           </button>
-          <button class="operation" id="delete" name="delete-snippet" type="submit" value="Delete Snippet">
+          <button accesskey="t" class="operation" id="delete" name="delete-snippet" type="submit" value="Delete Snippet">
             <span aria-hidden="true" class="fa fa-trash"></span> Delete Snippet
           </button>
           <p id="snippet-info">NOTE: Snippets will be saved in this area when you type in the large box above and then click the “Save Snippet” button above, right. You will then be able to click any saved snippet to have it read aloud to you.</p>
         </form>
-        <div id="snippets"></div>
+        <ul id="snippets">
+          <li>
+            <a accesskey="1" href="1" id="1">
+Dummy snippet number 1.
+</a>
+          </li>
+          <li>
+            <a accesskey="1" href="1" id="2">
+Dummy snippet number 2.
+</a>
+          </li>
+          <li>
+            <a accesskey="1" href="1" id="3">
+Dummy snippet number 3.
+</a>
+          </li>
+          <li>
+            <a accesskey="1" href="1" id="4">
+Dummy snippet number 4.
+</a>
+          </li>
+          <li>
+            <a accesskey="1" href="1" id="5">
+Dummy snippet number 5.
+</a>
+          </li>
+        </ul>
       </section>
     </main>
     <footer role="contentinfo">
