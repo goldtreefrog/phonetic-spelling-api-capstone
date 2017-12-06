@@ -28,7 +28,7 @@ This app is for users that fall into these categories, none of which are mutuall
 
 ## Working Prototype
 
-You can access a working prototype of the app once it has been developed. Check back for the link.
+You can access a working prototype of the app at (https://goldtreefrog.github.io/write-to-speak-api-capstone/)
 
 ## Functionality
 
