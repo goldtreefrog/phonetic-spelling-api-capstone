@@ -5,7 +5,6 @@
   box-sizing: border-box;
 }
 
-/* line 8, ../sass/_intro.scss */
 body {
   background-color: #fdffee;
   font-size: 16px;
@@ -14,6 +13,7 @@ body {
   margin-right: auto;
   max-width: 1000px;
   font-family: 'EB Garamond', serif;
+  line-height: 1.2em;
 }
 
 button, h1, h2, h3 {
@@ -24,11 +24,17 @@ textarea {
   font-family: 'EB Garamond', serif;
 }
 
-/* line 17, ../sass/_intro.scss */
+p {
+  margin: 1em 0;
+  padding: 0;
+}
+
 header#intro {
   text-align: center;
 }
-/* line 20, ../sass/_intro.scss */
+header#intro .btn {
+  font-family: 'Ubuntu', sans-serif;
+}
 header#intro h1 {
   color: #fdffee;
   margin: 0;
@@ -36,17 +42,14 @@ header#intro h1 {
   font-size: 3rem;
   font-family: 'Ubuntu', sans-serif;
 }
-/* line 27, ../sass/_intro.scss */
 header#intro #banner-img {
   background-color: #333333;
 }
-/* line 31, ../sass/_intro.scss */
 header#intro img {
   margin: 0 auto 25px;
   border-radius: 15px;
 }
 
-/* line 37, ../sass/_intro.scss */
 main#intro {
   display: block;
   max-width: 55rem;
@@ -55,37 +58,27 @@ main#intro {
   text-align: center;
   border-radius: 15px;
 }
-#intro .btn {
-  font-family: 'Ubuntu', sans-serif;
-}
-/* line 45, ../sass/_intro.scss */
 main#intro h1 {
   margin: 0;
   font-size: 3rem;
   padding: 15px;
 }
-/* line 51, ../sass/_intro.scss */
 main#intro h2 {
   margin: 0;
   font-size: 1.75rem;
   padding: 0;
   font-family: 'Ubuntu', sans-serif;
 }
-/* line 57, ../sass/_intro.scss */
 main#intro h3 {
   margin: 0 0 1.3em 0;
   font-size: 1.4rem;
   padding: .5em;
   border-bottom: solid 1px #333333;
 }
-/* line 64, ../sass/_intro.scss */
 main#intro p {
-  margin: 0;
-  padding: 1em 0;
   font-size: 1.2rem;
   text-align: left;
 }
-/* line 71, ../sass/_intro.scss */
 main#intro .btn {
   display: inline-block;
   margin: 1.5rem;
@@ -99,89 +92,89 @@ main#intro .btn {
   font-weight: 900;
   font-size: 1.4rem;
 }
+main#intro .btn::first-letter {
+  text-decoration: underline;
+  text-decoration-color: #930;
+  font-size: 1.2em;
+  letter-spacing: 1px;
+}
 
-/* line 86, ../sass/_intro.scss */
 footer {
   text-align: center;
   margin: 0;
   padding: 5em 0;
 }
 
-/* line 1, ../sass/_write.scss */
 button {
   background: linear-gradient(#f5e882, #c7ba6b);
   border: solid 1px #000000;
   padding: 2px;
+  font-family: 'EB Garamond', serif;
 }
 
-/* line 6, ../sass/_write.scss */
+button, h1, h2, h3 {
+  font-family: 'Ubuntu', sans-serif;
+}
+
 button:hover, button:focus {
   color: white;
   background: none;
   background-color: #423e24;
 }
 
-/* line 12, ../sass/_write.scss */
+textarea {
+  font-family: 'EB Garamond', serif;
+}
+
 header#top, header#help {
   text-align: center;
 }
-/* line 15, ../sass/_write.scss */
 header#top img, header#help img {
   display: inline-block;
   margin: 0 1.5rem 0 0;
   height: 4rem;
   vertical-align: middle;
 }
-/* line 21, ../sass/_write.scss */
 header#top h1, header#help h1 {
   display: inline-block;
   margin: 2rem 0 0;
 }
 
-/* line 27, ../sass/_write.scss */
 nav {
   width: 100%;
   display: block;
 }
-/* line 31, ../sass/_write.scss */
 nav ul {
   list-style: none;
   margin-top: 5px;
 }
-/* line 36, ../sass/_write.scss */
 nav ul li {
   display: inline-block;
   width: 18%;
   border-right: 1px solid gray;
 }
-/* line 41, ../sass/_write.scss */
 nav ul :last-child {
   border-right: 0;
 }
-/* line 45, ../sass/_write.scss */
 nav ul a {
   display: inline-block;
   width: 100%;
   text-decoration: none;
   color: #000000;
 }
-/* line 52, ../sass/_write.scss */
 nav ul a:hover, nav ul a:focus {
   color: white;
   background-color: #423e24;
 }
 
-/* line 59, ../sass/_write.scss */
 main#write {
   margin: 2rem 0 0;
 }
-/* line 63, ../sass/_write.scss */
 main#write form#writing {
   width: 100%;
   padding: 0;
   margin: 0;
 }
-/* line 68, ../sass/_write.scss */
 main#write form#writing fieldset {
   display: block;
   margin: 0;
@@ -189,7 +182,6 @@ main#write form#writing fieldset {
   float: left;
   width: 28%;
 }
-/* line 77, ../sass/_write.scss */
 main#write form#writing fieldset#write-box {
   display: inline-block;
   margin: 1.5rem 1%;
@@ -197,7 +189,6 @@ main#write form#writing fieldset#write-box {
   width: 70%;
   height: 11rem;
 }
-/* line 85, ../sass/_write.scss */
 main#write form#writing fieldset#write-box textarea {
   margin: 0;
   padding: 2px 3px;
@@ -205,40 +196,32 @@ main#write form#writing fieldset#write-box textarea {
   width: 100%;
   border: solid 2px #999999;
 }
-/* line 93, ../sass/_write.scss */
 main#write form#writing fieldset#write-box textarea:hover, main#write form#writing fieldset#write-box textarea:focus {
   outline: none !important;
   border: dashed 2px #999999;
   background-color: white;
 }
-/* line 100, ../sass/_write.scss */
 main#write form#writing fieldset#box-buttons {
   margin: 3rem 0 0 0;
 }
-/* line 103, ../sass/_write.scss */
 main#write form#writing fieldset#box-buttons button {
   margin-top: 4px;
   width: 100%;
 }
-/* line 108, ../sass/_write.scss */
 main#write form#writing fieldset#box-buttons :first-child {
   margin-top: 0;
 }
-/* line 115, ../sass/_write.scss */
 main#write #spelling-area {
   clear: both;
   text-align: center;
 }
-/* line 120, ../sass/_write.scss */
 main#write #snippet-area {
   margin: 0 0 0 10px;
 }
-/* line 123, ../sass/_write.scss */
 main#write #snippet-area #snippets {
   margin: 0 auto;
   width: 100%;
 }
-/* line 127, ../sass/_write.scss */
 main#write #snippet-area #snippets li {
   display: inline-block;
   width: 24%;
@@ -248,7 +231,6 @@ main#write #snippet-area #snippets li {
   list-style: none;
   background-color: #ccccff;
 }
-/* line 136, ../sass/_write.scss */
 main#write #snippet-area #snippets li a {
   padding: 0.25rem;
   text-decoration: none;
@@ -256,75 +238,90 @@ main#write #snippet-area #snippets li a {
   display: inline-block;
   width: 100%;
 }
-/* line 144, ../sass/_write.scss */
 main#write #snippet-area #snippets li a:hover, main#write #snippet-area #snippets li a:focus {
   color: white;
   background-color: #423e24;
 }
 
-/* line 2, ../sass/_help.scss */
 header#help h2 {
   margin: 1em 0;
   font-family: 'Ubuntu', sans-serif;
 }
 
-/* line 7, ../sass/_help.scss */
 main#help {
   text-align: left;
 }
-/* line 10, ../sass/_help.scss */
 main#help ul {
   margin: 1rem 2rem 2rem;
 }
-/* line 13, ../sass/_help.scss */
 main#help ul li {
   margin-bottom: 0.5em;
-  line-height: 1.2em;
 }
-/* line 19, ../sass/_help.scss */
 main#help h3 {
   margin: 1em 0;
 }
-/* line 24, ../sass/_help.scss */
-main#help table {
-  margin: 2em;
-  border-spacing: 0;
-  border-collapse: collapse;
-  float: left;
-  width: 18em;
+main#help #alpha-list {
+  display: block;
+  max-width: 20rem;
+  margin: 1.75rem auto;
+  clear: both;
+  background-color: #f9fee8;
+  font-size: 0;
 }
-/* line 30, ../sass/_help.scss */
-main#help table caption {
-  text-align: left;
-  margin-bottom: .5em;
-  height: 2em;
+main#help #alpha-list h4#table-header {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1rem;
+  margin: 0 0 8px;
+  text-align: center;
 }
-/* line 36, ../sass/_help.scss */
-main#help table tr {
+main#help #alpha-list .col {
+  width: 72%;
+  display: inline-block;
   margin: 0;
+  padding: 5px;
+  border: 1px gray solid;
+  border-spacing: 0;
+  font-size: 1rem;
 }
-/* line 38, ../sass/_help.scss */
-main#help table tr td {
-  padding: .5em 0.5em;
-  border: solid 1px black;
+main#help #alpha-list .narrow {
+  width: 27%;
+}
+main#help #alpha-list .header {
+  margin: 0;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
 }
 
-@media only screen and (max-width: 640px) {
-  /* line 2, ../sass/_media-size.scss */
+@media only screen and (max-width: 773px) {
   nav li {
     display: block;
     width: 95%;
     margin-left: auto;
     margin-right: auto;
-    border-right: 0;
+    border-right: solid 1px black;
+    height: 3rem;
+    vertical-align: top;
   }
-
-  /* line 26, ../sass/_media-size.scss */
+  nav li a {
+    display: block;
+    border: none;
+  }
+  nav li span {
+    display: block;
+    clear: both;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 649px) {
+  nav li {
+    height: 4rem;
+  }
+}
+@media only screen and (max-width: 640px) {
   main#write form#writing fieldset#write-box {
     margin: 0 0 10px;
     width: 100%;
   }
-  /* line 36, ../sass/_media-size.scss */
   main#write form#writing fieldset#box-buttons {
     margin-top: 0;
     padding-top: 0;
@@ -333,16 +330,13 @@ main#help table tr td {
     clear: both;
     width: 100%;
   }
-  /* line 53, ../sass/_media-size.scss */
   main#write #snippet-area {
     margin: 0;
   }
-  /* line 56, ../sass/_media-size.scss */
   main#write #snippet-area .operation {
     width: 100%;
     margin: .1rem 0;
   }
-  /* line 62, ../sass/_media-size.scss */
   main#write #snippet-area #snippets li {
     width: 100%;
     margin: .15rem 0;
