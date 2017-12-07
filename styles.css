@@ -108,7 +108,7 @@ footer {
 button {
   background: linear-gradient(#f5e882, #c7ba6b);
   border: solid 1px #000000;
-  padding: 2px;
+  padding: 5px;
   font-family: 'EB Garamond', serif;
 }
 
@@ -215,6 +215,9 @@ main#write #spelling-area {
   clear: both;
   text-align: center;
 }
+main#write #spelling-area #more-words {
+  text-decoration: none;
+}
 main#write #snippet-area {
   margin: 0 0 0 10px;
 }
@@ -232,7 +235,7 @@ main#write #snippet-area #snippets li {
   background-color: #ccccff;
 }
 main#write #snippet-area #snippets li a {
-  padding: 0.25rem;
+  padding: 5px;
   text-decoration: none;
   color: #000000;
   display: inline-block;
