@@ -124,6 +124,8 @@ button:hover, button:focus {
 
 textarea {
   font-family: 'EB Garamond', serif;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 header#top, header#help {
