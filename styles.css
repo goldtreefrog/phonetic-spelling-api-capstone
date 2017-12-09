@@ -125,7 +125,6 @@ button:hover, button:focus {
 textarea {
   font-family: 'EB Garamond', serif;
   box-sizing: border-box;
-  overflow-x: hidden;
 }
 
 header#top, header#help {
@@ -219,6 +218,10 @@ main#write #spelling-area {
 }
 main#write #spelling-area #more-words {
   text-decoration: none;
+}
+main#write #spelling-area a:hover, main#write #spelling-area a:focus {
+  color: white;
+  background-color: #423e24;
 }
 main#write #snippet-area {
   margin: 0 0 0 10px;
@@ -323,6 +326,11 @@ main#help #alpha-list .header {
   }
 }
 @media only screen and (max-width: 640px) {
+  button {
+    padding-top: 13px;
+    padding-bottom: 13px;
+  }
+
   main#write form#writing fieldset#write-box {
     margin: 0 0 10px;
     width: 100%;
@@ -335,6 +343,14 @@ main#help #alpha-list .header {
     clear: both;
     width: 100%;
   }
+  main#write #spelling-area {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  main#write #spelling-area #more-words {
+    display: inline-block;
+    padding: 13px 10px;
+  }
   main#write #snippet-area {
     margin: 0;
   }
@@ -345,5 +361,9 @@ main#help #alpha-list .header {
   main#write #snippet-area #snippets li {
     width: 100%;
     margin: .15rem 0;
+  }
+  main#write #snippet-area #snippets li a {
+    padding-top: 13px;
+    padding-bottom: 13px;
   }
 }
