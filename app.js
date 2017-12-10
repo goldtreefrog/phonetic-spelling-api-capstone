@@ -2,25 +2,25 @@
 
 // Step 1: Defining global variables, functions and objects
 
-let zoomFactor = 1;
+let zoomPercent = 100;
 
-function voiceStartCallback(userMsg) {
-    console.log("Voice started");
-    if(confirm(userMsg)) {
-      $('textarea').val('');
-    }
-}
+// function voiceStartCallback(userMsg) {
+//     console.log("Voice ended? Hah!");
+//     if(confirm(userMsg)) {
+//       $('textarea').val('');
+//     }
+// }
 
 // Function: zoomPage
 // Zoom function
-function zoomPage(zoomFactor, step) {
+function zoomPage(zoomPercent, step) {
   // Maximum zoom in or out is double or half; when exceeded, return to default browser size.
-  zoomFactor += step;
-  if(zoomFactor > 2.1 || zoomFactor < .5) {
-    zoomFactor = 1;
+  zoomPercent += step;
+  if(zoomPercent > 201 || zoomPercent < 50) {
+    zoomPercent = 100;
   }
-  $('body').css('zoom', `${zoomFactor*100}%`)
-  return zoomFactor;
+  $('body').css('zoom', `${zoomPercent}%`)
+  return zoomPercent;
 }
 
 
@@ -32,15 +32,15 @@ $(document).ready(function() {
 // Zoom in
   $('#plus').on('click', function(e) {
     e.preventDefault();
-    let step = .1
-    zoomFactor = zoomPage(zoomFactor, step);
+    let step = 10
+    zoomPercent = zoomPage(zoomPercent, step);
   })
 
 // Zoom out
   $('#minus').on('click', function(e) {
     e.preventDefault();
-    let step = -.1
-    zoomFactor = zoomPage(zoomFactor, step);
+    let step = -10
+    zoomPercent = zoomPage(zoomPercent, step);
   })
 
 // Read text aloud
@@ -63,11 +63,19 @@ $(document).ready(function() {
     let userMsg = "Click OK to delete your text or Cancel to keep it there."
 
     var rVParameters = {
-        onstart: voiceStartCallback(userMsg), 
-        // onend: voiceEndCallback
+        onstart: voiceStartCallback(userMsg),
+        // onend: voiceStartCallback(userMsg)
     }
 
     responsiveVoice.speak(userMsg,"US English Male", rVParameters);
+
+    // For some as-yet unknown reason, if you pass userMsg to the voiceStartCallBack function, the confirm dialog popsup and the Responsive Voice message is not spoken UNTIL AFTER the dialog box is closed. Inside the RV function, you do not have to pass the message and everything works as desired.
+    function voiceStartCallback() {
+        console.log("Voice start");
+        if(confirm(userMsg)) {
+          $('textarea').val('');
+        }
+    }
 
   });
 });
