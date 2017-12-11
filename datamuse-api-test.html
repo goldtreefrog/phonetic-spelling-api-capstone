@@ -24,12 +24,16 @@
 
             /* Update all the parameters for your API test*/
             var params = {
-                site: ''
+                site: '',
+                max: 20,
+                sl: "elefint"
             };
 
+            // sounds like: sl=elefint
+            // spelled like: sp=elefint
             var result = $.ajax({
                 /* update API end point */
-                url: "https://api.datamuse.com/words?sl=elefint&sp=elyfont",
+                url: "https://api.datamuse.com/words",
                 data: params,
                 dataType: "json",
                 /*set the call type GET / POST*/
