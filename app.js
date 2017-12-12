@@ -23,6 +23,51 @@ function zoomPage(zoomPercent, step) {
   return zoomPercent;
 }
 
+// Function: sendToLanguageToolAPI
+function sendToLanguageToolAPI(textToCheck) {
+  // Find misspellings with LanguageTool
+  var params = {
+      site: '',
+      text: textToCheck,
+      language: "en-us"
+  };
+
+  let url = "https://languagetool.org/api/v2/check"
+
+  $.getJSON(url, params, parseLTResults);
+}
+
+function parseLTResults(data) {
+  // data.forEach(function(mistake){
+  //   console.log(mistake);
+  // });
+  // console.log(data.matches);
+  // console.log(data.matches[0].length);
+  // console.log(data.matches[0].offset);
+  // // shortMessage:"Spelling mistake"
+  // console.log(data.matches[0].shortMessage);
+  // console.log(data.matches[0].sentence);
+  // var res = data.matches[0].sentence.substring(data.matches[0].offset, data.matches[0].length);
+  // console.log(res);
+
+  $.each(data.matches, function (dataKey, dataValue) {
+    console.log(dataValue, dataKey);
+    let offs = dataValue.offset;
+    // console.log(dataValue.offset);
+    let len = dataValue.length;
+    // console.log(dataValue.length);
+    // console.log(dataValue.shortMessage);
+    let sent = dataValue.sentence;
+    // console.log(res);
+    // console.log(dataValue.sentence);
+    var res = sent.substring(offs, (len + offs));
+    console.log(res);
+    // Search for alternatives to phonetic spelling
+
+  });
+
+}
+
 // Function: getSpellingFromAPI
 // Check spelling of word. If incorrect, return suggestions
 function getSpellingFromAPI (wordToCheck) {
@@ -88,11 +133,12 @@ $(document).ready(function() {
     }
   })
 
-// Spell check using Datamuse API
+// Identify misspelling using LanguageTool API
   $('#misspellings').on('click', function(e) {
     e.preventDefault();
     console.log('1. Check Spelling clicked');
 
+    // See if there is any text at all.
     let textToSpell = $.trim($('textarea').val());
 
     if (!textToSpell) {
@@ -100,14 +146,8 @@ $(document).ready(function() {
       return;
     }
 
-    // Make split on white space
-    const userWords = textToSpell.split(/\s+/);
-    userWords.forEach(function(uWord){
-      // See if it is spelled correctly *** FIX THIS ***
-      //
-      // Check misspelling against sound-alike words
-      getSpellingFromAPI(uWord);
-    });
+    sendToLanguageToolAPI(textToSpell);
+
   });
 
 // Delete text in textarea
