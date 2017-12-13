@@ -109,34 +109,41 @@ button {
   background: linear-gradient(#f5e882, #c7ba6b);
   border: solid 1px #000000;
   padding: 5px;
-  font-family: 'EB Garamond', serif;
+  font-family: "EB Garamond", serif;
 }
 
-button, h1, h2, h3 {
-  font-family: 'Ubuntu', sans-serif;
+button,
+h1,
+h2,
+h3 {
+  font-family: "Ubuntu", sans-serif;
 }
 
-button:hover, button:focus {
+button:hover,
+button:focus {
   color: white;
   background: none;
   background-color: #423e24;
 }
 
 textarea {
-  font-family: 'EB Garamond', serif;
+  font-family: "EB Garamond", serif;
   box-sizing: border-box;
 }
 
-header#top, header#help {
+header#top,
+header#help {
   text-align: center;
 }
-header#top img, header#help img {
+header#top img,
+header#help img {
   display: inline-block;
   margin: 0 1.5rem 0 0;
   height: 4rem;
   vertical-align: middle;
 }
-header#top h1, header#help h1 {
+header#top h1,
+header#help h1 {
   display: inline-block;
   margin: 2rem 0 0;
 }
@@ -163,7 +170,8 @@ nav ul a {
   text-decoration: none;
   color: #000000;
 }
-nav ul a:hover, nav ul a:focus {
+nav ul a:hover,
+nav ul a:focus {
   color: white;
   background-color: #423e24;
 }
@@ -197,7 +205,8 @@ main#write form#writing fieldset#write-box textarea {
   width: 100%;
   border: solid 2px #999999;
 }
-main#write form#writing fieldset#write-box textarea:hover, main#write form#writing fieldset#write-box textarea:focus {
+main#write form#writing fieldset#write-box textarea:hover,
+main#write form#writing fieldset#write-box textarea:focus {
   outline: none !important;
   border: dashed 2px #999999;
   background-color: white;
@@ -216,10 +225,19 @@ main#write #spelling-area {
   clear: both;
   text-align: center;
 }
-main#write #spelling-area #more-words {
+main#write #spelling-area #spelling-choices button#more-words {
   text-decoration: none;
+  background: none;
+  border: none;
+  color: #0000cc;
 }
-main#write #spelling-area a:hover, main#write #spelling-area a:focus {
+main#write #spelling-area #spelling-choices button#more-words:hover,
+main#write #spelling-area #spelling-choices button#more-words:focus {
+  color: white;
+  background-color: #423e24;
+}
+main#write #spelling-area a:hover,
+main#write #spelling-area a:focus {
   color: white;
   background-color: #423e24;
 }
@@ -246,7 +264,8 @@ main#write #snippet-area #snippets li a {
   display: inline-block;
   width: 100%;
 }
-main#write #snippet-area #snippets li a:hover, main#write #snippet-area #snippets li a:focus {
+main#write #snippet-area #snippets li a:hover,
+main#write #snippet-area #snippets li a:focus {
   color: white;
   background-color: #423e24;
 }
