@@ -225,14 +225,28 @@ main#write #spelling-area {
   clear: both;
   text-align: center;
 }
-main#write #spelling-area #spelling-choices button#more-words {
+main#write #spelling-area #spelling-info {
+  text-align: left;
+  margin-top: 0;
+}
+main#write #spelling-area button {
+  margin-top: 10px;
+}
+main#write #spelling-area button#more-words,
+main#write #spelling-area button#user-spelling {
   text-decoration: none;
   background: none;
   border: none;
   color: #0000cc;
 }
-main#write #spelling-area #spelling-choices button#more-words:hover,
-main#write #spelling-area #spelling-choices button#more-words:focus {
+main#write #spelling-area button#user-spelling {
+  padding: 25px 0.1em 1px 0.25em;
+  margin-bottom: 0;
+}
+main#write #spelling-area button#more-words:hover,
+main#write #spelling-area button#more-words:focus,
+main#write #spelling-area button#user-spelling:hover,
+main#write #spelling-area button#user-spelling:focus {
   color: white;
   background-color: #423e24;
 }
@@ -240,6 +254,15 @@ main#write #spelling-area a:hover,
 main#write #spelling-area a:focus {
   color: white;
   background-color: #423e24;
+}
+main#write #spelling-area #spelling-choices li {
+  display: inline-block;
+}
+main#write #spelling-area #spelling-choices li a {
+  font-size: 1.2rem;
+  padding: 1em 25px;
+  margin: 1px;
+  line-height: 3em;
 }
 main#write #snippet-area {
   margin: 0 0 0 10px;
@@ -366,7 +389,8 @@ main#help #alpha-list .header {
     padding-top: 5px;
     padding-bottom: 5px;
   }
-  main#write #spelling-area #more-words {
+  main#write #spelling-area #more-words,
+  main#write #spelling-area #user-spelling {
     display: inline-block;
     padding: 13px 10px;
   }
@@ -375,11 +399,11 @@ main#help #alpha-list .header {
   }
   main#write #snippet-area .operation {
     width: 100%;
-    margin: .1rem 0;
+    margin: 0.1rem 0;
   }
   main#write #snippet-area #snippets li {
     width: 100%;
-    margin: .15rem 0;
+    margin: 0.15rem 0;
   }
   main#write #snippet-area #snippets li a {
     padding-top: 13px;
