@@ -4,12 +4,6 @@
 
 let zoomPercent = 100;
 const spellData = [];
-// function voiceStartCallback(userMsg) {
-//     console.log("Voice start");
-//     if(confirm(userMsg)) {
-//       $('textarea').val('');
-//     }
-// }
 
 // Function: zoomPage
 // Zoom function
@@ -37,6 +31,7 @@ function sendToLanguageToolAPI(textToCheck) {
   $.getJSON(url, params, parseLTResults);
 }
 
+// Function: parseLTResults
 function parseLTResults(data) {
   const misspellings = [];
 
@@ -140,7 +135,7 @@ function suggestSpelling(data) {
     });
   }
 
-  console.log(spellData.length);
+  // console.log(spellData.length);
   console.log(spellData);
 
   // If there is a value in #more-words, use it.
@@ -292,9 +287,10 @@ $(document).ready(function() {
   $("#more-words").on("click", function(e) {
     e.preventDefault();
     suggestSpelling();
+    $("#spelling-choices a:first").focus();
   });
 
-  // Click on Correct to replace user's original spelling with correction.
+  // Click on suggested spelling word to replace user's original spelling with correction.
   $("#spelling-choices").on("click", ".spell-suggest", function(e) {
     e.preventDefault();
     console.log("Now we correct it!");
@@ -302,14 +298,18 @@ $(document).ready(function() {
     console.log("offset = " + offset);
     let userText = $("textarea").val();
     console.log($(e.target).text());
+    let newWord = $(e.target).text();
+    console.log("userText.length = " + userText.length);
+    let lastChar = userText.length - 1;
+    // +
+    // (newWord.length - $("#user-spelling").text().length);
+    console.log("lastChar = " + lastChar);
     let correctedText =
       userText.substring(0, offset) +
-      $(e.target).text() +
-      userText.substring(offset + $("#user-spelling").text().length, 9999);
-    // let correctedText = userText.replace(
-    //   $("button#user-spelling").text(),
-    //   $(e.target).text()
-    // );
+      newWord +
+      " " +
+      // userText.substring(offset + newWord.length, lastChar);
+      userText.substring(offset + $("#user-spelling").text().length, lastChar);
     $("textarea").val(correctedText);
   });
 });
