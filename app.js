@@ -37,20 +37,20 @@ function parseLTResults(data) {
   const misspellings = [];
 
   $.each(data.matches, function(dataKey, dataValue) {
-    console.log("dataValue, dataKey");
-    console.log(dataValue, dataKey);
+    // console.log("dataValue, dataKey");
+    // console.log(dataValue, dataKey);
     let offs = dataValue.offset;
-    console.log("offset");
-    console.log(dataValue.offset);
+    // console.log("offset");
+    // console.log(dataValue.offset);
     let len = dataValue.length;
-    console.log("length");
-    console.log(dataValue.length);
+    // console.log("length");
+    // console.log(dataValue.length);
     // console.log(dataValue.shortMessage);
     // let sent = dataValue.sentence;  // Don't user sentence. Use context.
     // console.log(dataValue.sentence);
     // var res = sent.substring(offs, len + offs);
-    console.log("context");
-    console.log(dataValue.context);
+    // console.log("context");
+    // console.log(dataValue.context);
     let cxt = dataValue.context.text;
     var res = cxt.substring(offs, len + offs);
     console.log(res);
@@ -86,30 +86,14 @@ function parseLTResults(data) {
 //    lastSuggestion:  index of last spelling suggestion that will be put in HTML
 function offerSpellings(curRow, misspellings) {
   console.log("in offerSpellings with curRow = ");
-  // console.log(curRow);
+  console.log(curRow);
+  console.log($("textarea").val());
   // If new data, store it in hidden input#suggestions field
   if (misspellings) {
     console.log("creating new array");
     $("input#suggestions").val(JSON.stringify(misspellings)); //store array
-
-    // // Display spelling correction instructions and speak them also
-    // $("#spelling-info").html(
-    //   'Instead of <button class="spelling" id="user-spelling" name="user-spelling" type="submit" value="' +
-    //     misspellings[curRow].mWord +
-    //     '">' +
-    //     misspellings[curRow].mWord +
-    //     "</button>" +
-    //     ", did you mean any of these? Click the one you want:"
-    // );
-    // sayIt(
-    //   "Instead of " +
-    //     misspellings[curRow].mWord +
-    //     ", did you mean any of these? Click the one you want.",
-    //   "#user-spelling",
-    //   "#write-box"
-    // );
-
-    // Otherwise, retrieve it from hidden input#suggestions field
+    $("#more-words").val(""); // Clear previous
+    // otherwise, load data from where it was stored in hidden field.
   } else {
     console.log("Retrieving misspellings array");
     misspellings = JSON.parse($("input#suggestions").val()); //retrieve array
@@ -135,33 +119,15 @@ function offerSpellings(curRow, misspellings) {
   // console.log(misspellings.length);
   // console.log("curRow");
   // console.log(curRow);
-  console.log("textarea offset");
-  console.log(misspellings[curRow].offset);
+  // console.log("textarea offset");
+  // console.log(misspellings[curRow].offset);
   $("button#ignore").val(
     JSON.stringify({ offset: misspellings[curRow].offset, row: curRow })
   );
   console.log("buttons#ignore value =");
   console.log($("button#ignore").val());
 
-  // Show the suggested spelling words
-  // 1. Display the message and speak it also [moved above so only does it once]
-  // $("#spelling-info").html(
-  //   'Instead of <button class="spelling" id="user-spelling" name="user-spelling" type="submit" value="' +
-  //     misspellings[curRow].mWord +
-  //     '">' +
-  //     misspellings[curRow].mWord +
-  //     "</button>" +
-  //     ", did you mean any of these? Click the one you want:"
-  // );
-  // sayIt(
-  //   "Instead of " +
-  //     misspellings[curRow].mWord +
-  //     ", did you mean any of these? Click the one you want.",
-  //   "#user-spelling",
-  //   "#write-box"
-  // );
-
-  // 2. Show suggested spellings, either from the beginning or from where you left off.
+  // Show suggested spellings, either from the beginning or from where you left off.
   console.log("3. In offerSpellings about to suggest spellings");
   console.log(misspellings[curRow].replacements);
 
@@ -269,6 +235,28 @@ function sayIt(textToSay, focusElem, scrollElem) {
   }
 }
 
+function textChangeByUser() {
+  if (!($("textarea").val() === $("#check-spelling").val())) {
+    console.log(
+      "WE NEED TO GIVE THE USER A MESSAGE NOW ABOUT NEEDING TO CLICK CHECK SPELLING AGAIN"
+    );
+    // Tell the user to click Check Spelling again.
+    // NOTE: For some reason, Responsive Voice pronouncess "spelling" as "speaking." The workaround  is to break it like this: "spell ing" because it pronounces "spell" correctly.
+    let msg = "The writing in the box above has changed. Please click Check ";
+    $("#spelling-info").html(msg + "Spelling again.");
+    sayIt(msg + "Spell ing again.");
+
+    // Remove spelling suggestions
+    $("#spelling-choices")
+      .children()
+      .remove();
+
+    return true;
+  } else {
+    return false;
+  }
+}
+
 // Step 2: Using global variables, functions and objects (document ready and triggers)
 
 // document ready; listen for triggers
@@ -321,6 +309,10 @@ $(document).ready(function() {
       return;
     }
 
+    // Store original textarea value so can tell if user changed it by typing directly.
+    $("#check-spelling").val($("textarea").val());
+    console.log("original user text: " + $("#check-spelling").val());
+
     sendToLanguageToolAPI(textToSpell);
   });
 
@@ -356,6 +348,12 @@ $(document).ready(function() {
   // Click on More to display more spelling suggestions
   $("#more-words").on("click", function(e) {
     e.preventDefault();
+
+    // Get out if direct typing change of textarea.
+    if (textChangeByUser()) {
+      return;
+    }
+
     console.log("about to retrieve value on button#ignore");
     let positions = JSON.parse($("button#ignore").val());
     console.log("positions = ");
@@ -369,6 +367,11 @@ $(document).ready(function() {
   $("#spelling-choices").on("click", ".spell-suggest", function(e) {
     e.preventDefault();
     console.log("Now we correct it!");
+    // If the user changed the textarea DIRECTLY in the textare, issue message and get out
+    if (textChangeByUser()) {
+      return;
+    }
+
     let positions = JSON.parse($("button#ignore").val());
     console.log(positions); // row, offset
     let userText = $("textarea").val();
@@ -422,9 +425,14 @@ $(document).ready(function() {
     // Reset #more-words because you are done with the current one. (It will be set again for next word.)
     $("#more-words").val("");
 
+    // Update copy of textarea to compare later
+    $("#check-spelling").val($("textarea").val());
+
     // Suggest spelling for NEXT incorrect word, if any
     offerSpellings(positions.row + 1);
   });
+
+  // If the user clicks on the copy of his original spelling, give additional instructions
   $("#spelling-info").on("click", "#user-spelling", function(e) {
     console.log("Oh my! Clicked the incorrect one.");
     $("#spelling-info").html(
@@ -432,13 +440,31 @@ $(document).ready(function() {
         $("#user-spelling").text() +
         '">' +
         $("#user-spelling").text() +
-        " </button>" +
+        "</button>" +
         "and go on to the next word, click the Ignore button below. Otherwise, click the spelling correction you want. You may also change the text in the writing box above and click the Check Spelling button again."
     );
+    console.log("|" + $("#user-spelling").text() + "|");
     sayIt(
       "If you wish to ignore the word " +
         $("#user-spelling").text() +
         "and go on to the next word, click the Ignore button below. Otherwise, click the spelling correction you want. You may also change the text in the writing box above and click the Check Spell ing button again."
     );
+  });
+
+  // When the Ignore button is clicked, skip the current word and check the next one.
+  $("#ignore").on("click", function(e) {
+    e.preventDefault();
+    console.log("Ignore has been clicked");
+
+    // If the user changed the textarea DIRECTLY in the textare, issue message and get out
+    if (textChangeByUser()) {
+      return;
+    }
+
+    $("#more-words").val("");
+
+    // Start with the NEXT misspelled word
+    let positions = JSON.parse($("button#ignore").val());
+    offerSpellings(positions.row + 1);
   });
 });
