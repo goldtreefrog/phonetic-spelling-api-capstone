@@ -62,7 +62,7 @@
             <button accesskey="l" class="read" id="read-aloud" name="read-aloud" type="submit" value="Read Aloud">
               <span aria-hidden="true" class="fa fa-bullhorn"></span> Read A<u>l</u>oud
             </button>
-            <button accesskey="k" class="read" id="misspellings" name="misspellings" type="submit" value="Check Spelling">
+            <button accesskey="k" class="read" id="check-spelling" name="check-spelling" type="submit" value="Check Spelling">
               <span aria-hidden="true" class="fa fa-check-square-o"></span> Chec<u>k</u> Spelling
             </button>
             <button accesskey="s" class="read" id="save" name="save" type="submit" value="Save Snippet">
@@ -79,6 +79,7 @@
       <section id="spelling-area">
         <p id="spelling-info"></p>
         <form action="#" id="spelling-actions" method="get" name="spelling-choices">
+          <input id="suggestions" name="suggestions" type="hidden" value="">
           <ul id="spelling-choices"></ul>
           <button accesskey="m" class="spelling" id="more-words" name="more-words" type="submit" value="">
             <u>M</u>ore

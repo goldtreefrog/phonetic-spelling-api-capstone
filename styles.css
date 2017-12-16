@@ -204,6 +204,7 @@ main#write form#writing fieldset#write-box textarea {
   height: 10rem;
   width: 100%;
   border: solid 2px #999999;
+  font-size: 1.2rem;
 }
 main#write form#writing fieldset#write-box textarea:hover,
 main#write form#writing fieldset#write-box textarea:focus {
@@ -224,13 +225,14 @@ main#write form#writing fieldset#box-buttons :first-child {
 main#write #spelling-area {
   clear: both;
   text-align: center;
+  display: none;
 }
 main#write #spelling-area #spelling-info {
   text-align: left;
   margin-top: 0;
 }
-main#write #spelling-area button {
-  margin-top: 10px;
+main#write #spelling-area p {
+  font-size: 1.2rem;
 }
 main#write #spelling-area button#more-words,
 main#write #spelling-area button#user-spelling {
@@ -240,7 +242,7 @@ main#write #spelling-area button#user-spelling {
   color: #0000cc;
 }
 main#write #spelling-area button#user-spelling {
-  padding: 25px 0.1em 1px 0.25em;
+  padding: 0 0.1em 1px 0.25em;
   margin-bottom: 0;
 }
 main#write #spelling-area button#more-words:hover,
@@ -265,7 +267,8 @@ main#write #spelling-area #spelling-choices li a {
   line-height: 3em;
 }
 main#write #snippet-area {
-  margin: 0 0 0 10px;
+  margin: 10px 0 0 10px;
+  clear: both;
 }
 main#write #snippet-area #snippets {
   margin: 0 auto;
@@ -388,6 +391,9 @@ main#help #alpha-list .header {
   main#write #spelling-area {
     padding-top: 5px;
     padding-bottom: 5px;
+  }
+  main#write #spelling-area button#user-spelling {
+    padding-top: 10px;
   }
   main#write #spelling-area #more-words,
   main#write #spelling-area #user-spelling {
