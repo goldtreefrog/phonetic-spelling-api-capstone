@@ -27,7 +27,6 @@ function sendToLanguageToolAPI(textToCheck) {
   };
 
   let url = "https://languagetool.org/api/v2/check";
-
   $.getJSON(url, params, parseLTResults);
 }
 
@@ -43,16 +42,20 @@ function parseLTResults(data) {
     // console.log("offset");
     // console.log(dataValue.offset);
     let len = dataValue.length;
-    // console.log("length");
+    // console.log("dataValue.length");
     // console.log(dataValue.length);
     // console.log(dataValue.shortMessage);
-    // let sent = dataValue.sentence;  // Don't user sentence. Use context.
+    // let sent = dataValue.sentence;  // Don't use sentence. Use context.
     // console.log(dataValue.sentence);
     // var res = sent.substring(offs, len + offs);
-    // console.log("context");
+    console.log("context.text");
     // console.log(dataValue.context);
     let cxt = dataValue.context.text;
-    var res = cxt.substring(offs, len + offs);
+    console.log("|" + cxt + "|");
+    // var res = cxt.substring(offs, len + offs);  // Context sometimes begins ..., ruining my results here.
+    var res = $("textarea")
+      .val()
+      .substring(offs, len + offs);
     console.log(res);
 
     var repl = dataValue.replacements;
@@ -68,6 +71,7 @@ function parseLTResults(data) {
   } else {
     let msg = "Congratulations! All words appear to be spelled correctly";
     $("#spelling-info").html(msg);
+    // $("#spelling-info").html("");
     sayIt(msg);
     $("#spelling-choices")
       .children()
@@ -154,6 +158,7 @@ function offerSpellings(curRow, misspellings) {
       "#user-spelling",
       "#write-box"
     );
+    // Otherwise, we are going to the next page of spelling suggestions
   } else {
     // If there is a value in #more-words, page forward to next group of suggestions.
     console.log("Folks we will display the next batch of suggestions!");
@@ -226,6 +231,8 @@ function offerSpellings(curRow, misspellings) {
 // Function: sayIt
 // Speak text string with optional focus and scrolling
 function sayIt(textToSay, focusElem, scrollElem) {
+  console.log("In sayIt");
+  console.log(textToSay);
   responsiveVoice.speak(textToSay);
   if (focusElem) {
     $(focusElem).focus();
@@ -276,10 +283,10 @@ $(document).ready(function() {
   });
 
   // Read text aloud using Responsive Voice API
-
   $("#read-aloud").on("click", function(e) {
     e.preventDefault();
-    let textToSpeak = $.trim($("textarea").val());
+    let textToSpeak = $("textarea").val();
+    // let textToSpeak = $.trim($("textarea").val());
 
     if (!textToSpeak) {
       sayIt(
@@ -299,7 +306,8 @@ $(document).ready(function() {
     console.log("1. Check Spelling clicked");
 
     // See if there is any text at all.
-    let textToSpell = $.trim($("textarea").val());
+    let textToSpell = $("textarea").val();
+    // let textToSpell = $.trim($("textarea").val());
 
     if (!textToSpell) {
       sayIt(
@@ -316,10 +324,11 @@ $(document).ready(function() {
     sendToLanguageToolAPI(textToSpell);
   });
 
-  // Delete text in textarea
+  // Delete text in textarea - if the user confirms it
   $("#clear").on("click", function(e) {
     e.preventDefault();
 
+    // If textarea is already empty, give an auditory message and do nothing else but get out.
     if (!$("textarea").val()) {
       sayIt("The big box is already empty.", "textarea");
       return;
@@ -327,6 +336,7 @@ $(document).ready(function() {
 
     let userMsg = "Click OK to delete your text or Cancel to keep it there.";
 
+    // Callback function, voiceStartCallback, pops up confirmation dialog
     var parameters = {
       onstart: voiceStartCallback
       // onend: voiceStartCallback(userMsg) // Does not work
@@ -379,14 +389,11 @@ $(document).ready(function() {
     let newWord = $(e.target).text();
     console.log("userText.length = " + userText.length);
     let lastChar = userText.length;
-    // +
-    // (newWord.length - $("#user-spelling").text().length);
     console.log("lastChar = " + lastChar);
 
     let correctedText =
       userText.substring(0, positions.offset) +
       newWord +
-      // userText.substring(offset + newWord.length, lastChar);
       userText.substring(
         positions.offset + $("#user-spelling").text().length,
         lastChar
@@ -416,6 +423,8 @@ $(document).ready(function() {
         aMisspellings[i].offset += lengthDiff;
         console.log("Adjusted offset: " + aMisspellings[i].offset);
       }
+      console.log("Adjusted array of misspellings");
+      console.log(aMisspellings);
       // Store the adjusted array
       $("input#suggestions").val(JSON.stringify(aMisspellings));
     }
