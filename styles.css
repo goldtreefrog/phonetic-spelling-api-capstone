@@ -12,16 +12,19 @@ body {
   margin-left: auto;
   margin-right: auto;
   max-width: 1000px;
-  font-family: 'EB Garamond', serif;
+  font-family: "EB Garamond", serif;
   line-height: 1.2em;
 }
 
-button, h1, h2, h3 {
-  font-family: 'Ubuntu', sans-serif;
+button,
+h1,
+h2,
+h3 {
+  font-family: "Ubuntu", sans-serif;
 }
 
 textarea {
-  font-family: 'EB Garamond', serif;
+  font-family: "EB Garamond", serif;
 }
 
 p {
@@ -33,14 +36,14 @@ header#intro {
   text-align: center;
 }
 header#intro .btn {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 header#intro h1 {
   color: #fdffee;
   margin: 0;
-  padding: .3em;
+  padding: 0.3em;
   font-size: 3rem;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 header#intro #banner-img {
   background-color: #333333;
@@ -67,12 +70,12 @@ main#intro h2 {
   margin: 0;
   font-size: 1.75rem;
   padding: 0;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 main#intro h3 {
   margin: 0 0 1.3em 0;
   font-size: 1.4rem;
-  padding: .5em;
+  padding: 0.5em;
   border-bottom: solid 1px #333333;
 }
 main#intro p {
@@ -101,8 +104,9 @@ main#intro .btn::first-letter {
 
 footer {
   text-align: center;
-  margin: 0;
+  margin: 20px 0 0 0;
   padding: 5em 0;
+  clear: both;
 }
 
 button {
