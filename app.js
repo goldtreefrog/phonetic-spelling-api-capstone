@@ -118,6 +118,45 @@ function offerSpellings(curRow, misspellings) {
     $("#spelling-actions").css("display", "block");
   }
 
+  console.log(curRow);
+  console.log(misspellings);
+  console.log(misspellings[curRow].offset);
+  // If there are no spelling suggestions for the current word, display and speak message, increment curRow () and get out.
+  if (misspellings[curRow].replacements.length == 0) {
+    let msgBegin = "We cannot find ";
+    let msgEnd =
+      " in our dictionary and have no suggestions. Click continue to skip to the next word.";
+    $("#spelling-info").html(
+      msgBegin +
+        '<button class="spelling" id="user-spelling" name="user-spelling" type="submit" value="' +
+        misspellings[curRow].mWord +
+        '">' +
+        misspellings[curRow].mWord +
+        "</button>" +
+        msgEnd
+    );
+    sayIt(msgBegin + misspellings[curRow].mWord + msgEnd);
+
+    $("#more-words").css("visibility", "visible");
+    $("#more-words").html(
+      '<u>C</u>ontinue <span class="fa fa-arrow-circle-right" aria-hidden="true">'
+    );
+    $("#spelling-choices")
+      .children()
+      .remove();
+
+    // Unless that was the FINAL misspelled word, increment row
+    if (curRow < misspellings.length - 1) {
+      curRow += 1;
+      storeCurrentOffsetAndRow(misspellings[curRow].offset, curRow);
+    } else {
+      // Final row so cannot increment for array (or you get error) but still increment row so will get "finished" message next time.
+      storeCurrentOffsetAndRow(misspellings[curRow].offset, curRow + 1);
+    }
+
+    return;
+  }
+
   // Store the offest and current index on the Ignore button for later use.
   // console.log("misspellings.length (nbr of misspelled words)");
   // console.log(misspellings.length);
@@ -125,9 +164,8 @@ function offerSpellings(curRow, misspellings) {
   // console.log(curRow);
   // console.log("textarea offset");
   // console.log(misspellings[curRow].offset);
-  $("button#ignore").val(
-    JSON.stringify({ offset: misspellings[curRow].offset, row: curRow })
-  );
+  storeCurrentOffsetAndRow(misspellings[curRow].offset, curRow);
+
   console.log("buttons#ignore value =");
   console.log($("button#ignore").val());
 
@@ -262,6 +300,10 @@ function textChangeByUser() {
   } else {
     return false;
   }
+}
+
+function storeCurrentOffsetAndRow(curOffset, curRow) {
+  $("button#ignore").val(JSON.stringify({ offset: curOffset, row: curRow }));
 }
 
 // Step 2: Using global variables, functions and objects (document ready and triggers)

@@ -209,6 +209,7 @@ main#write form#writing fieldset#write-box textarea {
   width: 100%;
   border: solid 2px #999999;
   font-size: 1.2rem;
+  resize: none;
 }
 main#write form#writing fieldset#write-box textarea:hover,
 main#write form#writing fieldset#write-box textarea:focus {
