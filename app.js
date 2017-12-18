@@ -416,15 +416,11 @@ $(document).ready(function() {
   });
 
   // When focus or hover on spelling suggestion, speak that word
-  $("#spelling-choices").on(
-    "mouseenter focus mouseleave",
-    ".spell-suggest",
-    function(e) {
-      e.preventDefault;
-      console.log("In mouseenter focus for spelling-choices li");
-      sayIt($(e.target).text());
-    }
-  );
+  $("#spelling-choices").on("mouseenter focus", ".spell-suggest", function(e) {
+    e.preventDefault;
+    console.log("In mouseenter focus for spelling-choices li");
+    sayIt($(e.target).text());
+  });
 
   // Click on suggested spelling word to replace user's original spelling with correction.
   $("#spelling-choices").on("click", ".spell-suggest", function(e) {
