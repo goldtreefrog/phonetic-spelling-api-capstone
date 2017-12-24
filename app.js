@@ -2,25 +2,27 @@
 
 // Step 1: Defining global variables, functions and objects
 
-let zoomPercent = 100;
-// const spellData = [];
-
 // Function: zoomPage
 // Zoom function
-function zoomPage(zoomPercent, step) {
+function zoomPage(step) {
+  // Get the previous zoom level
+  let zoomPercent = $("#plus").data("zoomLvl");
+  console.log(zoomPercent);
   // Maximum zoom in or out is double or half; when exceeded, return to default browser size.
   zoomPercent += step;
   if (zoomPercent > 201 || zoomPercent < 50) {
     zoomPercent = 100;
   }
+  // Zoom it and store the new zoom level
   $("body").css("zoom", `${zoomPercent}%`);
-  return zoomPercent;
+  $("#plus").data("zoomLvl", zoomPercent);
+  // return zoomPercent;
 }
 
 // Function: sendToLanguageToolAPI
 function sendToLanguageToolAPI(textToCheck) {
   // Find misspellings with LanguageTool
-  var params = {
+  const params = {
     site: "",
     text: textToCheck,
     language: "en-us"
@@ -53,13 +55,13 @@ function parseLTResults(data) {
     let cxt = dataValue.context.text;
     console.log("|" + cxt + "|");
     // var res = cxt.substring(offs, len + offs);  // Context sometimes begins ..., ruining my results here.
-    var res = $("textarea")
+    let res = $("textarea")
       .val()
       .substring(offs, len + offs);
     console.log(res);
 
-    var repl = dataValue.replacements;
-    // console.log(repl);
+    const repl = dataValue.replacements;
+    console.log(repl);
     // Push misspelled word and its offset into the misspellings array
     if (dataValue.shortMessage === "Spelling mistake") {
       misspellings.push({ mWord: res, offset: offs, replacements: repl });
@@ -310,18 +312,25 @@ function storeCurrentOffsetAndRow(curOffset, curRow) {
 
 // document ready; listen for triggers
 $(document).ready(function() {
+  // Set default zoom level if not present
+  if (!$("#plus").data("zoomLvl")) {
+    $("#plus").data("zoomLvl", 100);
+  }
+
+  // Click events follow
+
   // Zoom in
   $("#plus").on("click", function(e) {
     e.preventDefault();
     let step = 10;
-    zoomPercent = zoomPage(zoomPercent, step);
+    zoomPage(step);
   });
 
   // Zoom out
   $("#minus").on("click", function(e) {
     e.preventDefault();
     let step = -10;
-    zoomPercent = zoomPage(zoomPercent, step);
+    zoomPage(step);
   });
 
   // Read text aloud using Responsive Voice API
@@ -379,7 +388,7 @@ $(document).ready(function() {
     let userMsg = "Click OK to delete your text or Cancel to keep it there.";
 
     // Callback function, voiceStartCallback, pops up confirmation dialog
-    var parameters = {
+    const parameters = {
       onstart: voiceStartCallback
       // onend: voiceStartCallback(userMsg) // Does not work
     };
