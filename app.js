@@ -160,12 +160,6 @@ function offerSpellings(curRow, misspellings) {
   }
 
   // Store the offest and current index on the Ignore button for later use.
-  // console.log("misspellings.length (nbr of misspelled words)");
-  // console.log(misspellings.length);
-  // console.log("curRow");
-  // console.log(curRow);
-  // console.log("textarea offset");
-  // console.log(misspellings[curRow].offset);
   storeCurrentOffsetAndRow(misspellings[curRow].offset, curRow);
 
   console.log("buttons#ignore value =");
@@ -236,8 +230,6 @@ function offerSpellings(curRow, misspellings) {
 
   // Create the 5 suggestions in backwards order on the screen so they end up in forward order.
   console.log("About to insert spelling suggestions:");
-  // console.log("lastSuggestion = " + lastSuggestion);
-  // console.log("firstSuggestion = " + firstSuggestion);
   for (let i = lastSuggestion; i >= firstSuggestion; i--) {
     // console.log(misspellings[curRow].replacements[i].value);
     $("#spelling-choices").prepend(
@@ -288,7 +280,7 @@ function textChangeByUser() {
       "WE NEED TO GIVE THE USER A MESSAGE NOW ABOUT NEEDING TO CLICK CHECK SPELLING AGAIN"
     );
     // Tell the user to click Check Spelling again.
-    // NOTE: For some reason, Responsive Voice pronouncess "spelling" as "speaking." The workaround  is to break it like this: "spell ing" because it pronounces "spell" correctly.
+    // NOTE: For some reason, Responsive Voice pronouncess "spelling" as "speaking." The workaround is to break it like this: "spell ing" because it pronounces "spell" correctly.
     let msg = "The writing in the box above has changed. Please click Check ";
     $("#spelling-info").html(msg + "Spelling again.");
     sayIt(msg + "Spell ing again.");
@@ -316,8 +308,9 @@ $(document).ready(function() {
   if (!$("#plus").data("zoomLvl")) {
     $("#plus").data("zoomLvl", 100);
   }
-
+  // ***************************
   // Click events follow
+  // ***************************
 
   // Zoom in
   $("#plus").on("click", function(e) {
@@ -421,14 +414,59 @@ $(document).ready(function() {
     console.log(positions);
 
     offerSpellings(positions.row);
-    $("#spelling-choices a:first").focus();
   });
 
-  // When focus or hover on spelling suggestion, speak that word
-  $("#spelling-choices").on("mouseenter focus", ".spell-suggest", function(e) {
+  // When mouse enters #more-words, set the focus there also to avoid confusion
+  $("#more-words").on("mouseenter", function(e) {
     e.preventDefault;
-    console.log("In mouseenter focus for spelling-choices li");
+    $(e.target).focus();
+  });
+
+  // If the mouse is already in #more-words and the user used keyboard to move out of it and then moves mouse, we want it to have the focus again (until the mouse moves out of the element).
+  $("#more-words").on("mousemove", function(e) {
+    if (!$(e.target).is(":focus")) {
+      $(e.target).focus(); // Set the focus there also to avoid confusion
+    }
+  });
+
+  // When #more-words has focus, reset colors on spelling suggestions and set colors on #more-words.
+  $("#more-words").on("focus", function(e) {
+    e.preventDefault;
+    $("main#write #spelling-area #spelling-choices li a").css({
+      "background-color": "white",
+      color: "#006"
+    });
+
+    $("#more-words").css({ "background-color": "#423e24", color: "white" });
+  });
+
+  // When focus on spelling suggestion, speak that word
+  $("#spelling-choices").on("focus", ".spell-suggest", function(e) {
+    e.preventDefault;
+    console.log("In focus for spelling-choices li");
+    // Reset background color so if mouse is still over a different spelling suggestion, its background will be white. (For some reason, "none" does not work the same way.)
+    $("main#write #spelling-area #spelling-choices li a").css({
+      "background-color": "white",
+      color: "#006"
+    });
+    // Reset background color on #more-words button in case mouse is still there.
+    $("#more-words").css({ "background-color": "white", color: "#006" });
+    // Set background color on the element with the focus
+    $("main#write #spelling-area #spelling-choices li a:focus").css({
+      "background-color": "#423e24",
+      color: "white"
+    });
+
+    // $("#user-spelling:focus").css("background-color: #423e24;");
     sayIt($(e.target).text());
+  });
+
+  // When hover on spelling suggestion, speak that word
+  $("#spelling-choices").on("mouseenter", ".spell-suggest", function(e) {
+    e.preventDefault;
+    console.log("In mouseenter for spelling-choices li");
+    $(e.target).focus();
+    // sayIt($(e.target).text());
   });
 
   // Click on suggested spelling word to replace user's original spelling with correction.
@@ -533,5 +571,34 @@ $(document).ready(function() {
     // Start with the NEXT misspelled word
     let positions = JSON.parse($("button#ignore").val());
     offerSpellings(positions.row + 1);
+  });
+
+  // Set focus when mouse enter to avoid confusion
+  $("#ignore").on("mouseenter", function(e) {
+    e.preventDefault;
+    $(e.target).focus();
+  });
+
+  // When focus on #ignore, reset colors on #more-words
+  $("#ignore").on("focus", function(e) {
+    e.preventDefault;
+    $("#more-words").css({
+      "background-color": "white",
+      color: "#006"
+    });
+
+    $("#ignore").css({
+      background: "none",
+      "background-color": "#423e24",
+      color: "white"
+    });
+  });
+
+  // When mouse leaves #ignore, reset its colors
+  $("#ignore").on("mouseleave focusout", function(e) {
+    $("#ignore").css({
+      color: "black",
+      background: "linear-gradient(#f5e882, #c7ba6b)"
+    });
   });
 });
