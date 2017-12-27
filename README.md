@@ -1,6 +1,6 @@
 # Write to Speak - Thinkful API Capstone Project
 
-A responsive website that pulls data from two APIs, Datamuse (https://www.datamuse.com/api/) and Responsive Voice (https://responsivevoice.org/api/) to encourage beginning spellers to write by helping with spelling and reading their writing back to them. Designed so that even one-fingered typists can use it.
+A responsive website that pulls data from two APIs, LanguageTool (https://languagetool.org/api) and Responsive Voice (https://responsivevoice.org/api/) to encourage beginning spellers to write by helping with spelling and reading their writing back to them. Designed so that even one-fingered typists can use it.
 
 ## User Cases
 
@@ -46,7 +46,7 @@ The app's functionality includes:
 *   CSS
 *   JavaScript
 *   jQuery
-*   The app uses AJAX JSON calls to the <a href="">Datamuse</a> API to check spellings and return suggestions for misspelled words.
+*   The app uses AJAX JSON calls to the [LanguageTool](https://languagetool.org/api) API to check spellings and return suggestions for misspelled words.
 *   The app uses AJAX JSON calls to the [Responsive Voice](http://www.convert-unix-time.com/api) Open Platform API to translate written text to speech and return voice output.
 
 ## Responsive
@@ -57,6 +57,7 @@ App is built to be responsive across mobile, tablet, laptop, and desktop screen 
 
 This is v1.0 of the app, but future enhancements are expected to include:
 
-*   Lookup meaning of selected word in English dictionary.
-*   Option(s) to read the instructions a buttons to the user. (Remember the target audience is beginning spellers who probably do not read very well.)
-*   Use of a database and login capabilities so that users can store their writings.
+*   Option(s) to read the instructions and buttons to the user. (Remember the target audience is beginning spellers who probably do not read very well.)
+*   A "snippets" feature for temporarily storing words, phrases and longer text to new buttons, which the user can then click to speak them back. For example, the user could store "Mom" in one snippet, "Dad" in another, "I love you" in a third, and "I am hungry" in a fourth. After that, the user could make the computer say, "Mom, I am hungry" in just two clicks without having to retype anything.
+*   An attached database and login capabilities so that users can store their snippets for later sessions.
+*   Look up the meanings of selected word in English dictionary.
