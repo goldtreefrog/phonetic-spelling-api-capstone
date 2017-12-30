@@ -8,15 +8,42 @@
 body {
   background-color: #fdffee;
   font-size: 16px;
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
+  padding: 5px;
   max-width: 1000px;
   font-family: "EB Garamond", serif;
   line-height: 1.2em;
 }
 body a:link {
   color: #000066;
+}
+
+header#intro img {
+  width: 95%;
+}
+
+nav li {
+  display: block;
+  width: 99%;
+  margin-left: auto;
+  margin-right: auto;
+  border-right: solid 1px black;
+  height: 3.5em;
+  vertical-align: top;
+}
+nav li a {
+  display: block;
+  border: none;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  height: 3.5em;
+}
+nav li span {
+  display: block;
+  clear: both;
+  width: 100%;
 }
 
 button,
@@ -193,20 +220,20 @@ main#write {
 main#write form#writing {
   width: 100%;
   padding: 0;
-  margin: 0;
+  margin: 0 0 10px;
 }
 main#write form#writing fieldset {
   display: block;
   margin: 0;
   padding: 0;
   float: left;
-  width: 28%;
+  width: 100%;
 }
 main#write form#writing fieldset#write-box {
   display: inline-block;
-  margin: 1.5rem 1%;
+  margin: 1.5rem 0;
   padding: 0;
-  width: 70%;
+  width: 100%;
   height: 11rem;
 }
 main#write form#writing fieldset#write-box textarea {
@@ -225,11 +252,15 @@ main#write form#writing fieldset#write-box textarea:focus {
   background-color: white;
 }
 main#write form#writing fieldset#box-buttons {
-  margin: 3rem 0 0 0;
+  margin: 0;
 }
 main#write form#writing fieldset#box-buttons button {
   margin-top: 4px;
   width: 100%;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  height: auto;
+  clear: both;
 }
 main#write form#writing fieldset#box-buttons :first-child {
   margin-top: 0;
@@ -237,7 +268,12 @@ main#write form#writing fieldset#box-buttons :first-child {
 main#write #spelling-area {
   clear: both;
   text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
   display: none;
+}
+main#write #spelling-area #spelling-choices {
+  width: 100%;
 }
 main#write #spelling-area #spelling-info {
   text-align: left;
@@ -246,29 +282,31 @@ main#write #spelling-area #spelling-info {
 main#write #spelling-area p {
   font-size: 1.2rem;
 }
-main#write #spelling-area button#more-words,
-main#write #spelling-area button#user-spelling {
+main#write #spelling-area button.spelling {
   text-decoration: none;
   background: none;
   border: none;
   color: #0000cc;
+  display: inline-block;
+  padding: 13px 10px;
 }
 main#write #spelling-area #more-container {
-  display: inline-block;
-  width: 19%;
+  display: block;
+  width: 100%;
 }
 main#write #spelling-area button#more-words {
   padding: 15px 25px;
   margin-left: auto;
+  margin-right: auto;
 }
-main#write #spelling-area button#user-spelling {
-  padding: 0 0.1em 1px 0.25em;
-  margin-bottom: 0;
+main#write #spelling-area button.spelling-button {
+  background: linear-gradient(#f5e882, #c7ba6b);
+  border: solid 1px #000000;
+  font-family: "EB Garamond", serif;
+  color: #000000;
 }
-main#write #spelling-area button#more-words:hover,
-main#write #spelling-area button#more-words:focus,
-main#write #spelling-area button#user-spelling:hover,
-main#write #spelling-area button#user-spelling:focus {
+main#write #spelling-area button.spelling:hover,
+main#write #spelling-area button.spelling:focus {
   color: white;
   background-color: #423e24;
 }
@@ -289,35 +327,6 @@ main#write #spelling-area #spelling-choices li a {
   padding: 15px 25px;
   margin: 1px;
   line-height: 3em;
-}
-main#write #snippet-area {
-  margin: 10px 0 0 10px;
-  clear: both;
-}
-main#write #snippet-area #snippets {
-  margin: 0 auto;
-  width: 100%;
-}
-main#write #snippet-area #snippets li {
-  display: inline-block;
-  width: 24%;
-  margin: 0.2rem auto;
-  text-decoration: none;
-  border: 1px solid gray;
-  list-style: none;
-  background-color: #ccccff;
-}
-main#write #snippet-area #snippets li a {
-  padding: 5px;
-  text-decoration: none;
-  color: #000000;
-  display: inline-block;
-  width: 100%;
-}
-main#write #snippet-area #snippets li a:hover,
-main#write #snippet-area #snippets li a:focus {
-  color: white;
-  background-color: #423e24;
 }
 
 header#help h2 {
@@ -369,107 +378,79 @@ main#help #alpha-list .header {
   font-weight: bold;
 }
 
-@media only screen and (max-width: 773px) {
+@media only screen and (min-width: 649px) {
   body {
     width: 95%;
+  }
+
+  nav li {
+    width: 95%;
+    vertical-align: top;
+    height: 2.5em;
+  }
+  nav li a {
+    display: inline-block;
+    border: none;
+    height: 2.5em;
+  }
+  nav li span {
+    display: inline-block;
+    clear: none;
+    width: auto;
+  }
+
+  header#intro img {
+    width: 99%;
+  }
+
+  main#write button {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  main#write form#writing {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  main#write form#writing fieldset#write-box {
+    width: 70%;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+  main#write form#writing fieldset#box-buttons {
+    margin: 3rem 0 0 0;
+    height: inherit;
+    clear: none;
+    width: 28%;
+  }
+  main#write #spelling-area {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  main#write #spelling-area #spelling-choices {
+    width: auto;
+  }
+  main#write #spelling-area #more-container {
+    display: inline-block;
+    width: 19%;
+  }
+  main#write #spelling-area #more-words {
+    margin-right: 0;
+  }
+  main#write #snippet-area {
+    margin: 10px 0 0 10px;
+  }
+}
+@media only screen and (min-width: 773px) {
+  body {
+    width: 80%;
+  }
+
+  nav li {
+    width: 85%;
   }
 
   header#intro img {
     width: 90%;
-  }
-
-  nav li {
-    display: block;
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
-    border-right: solid 1px black;
-    height: 3rem;
-    vertical-align: top;
-  }
-  nav li a {
-    display: block;
-    border: none;
-  }
-  nav li span {
-    display: block;
-    clear: both;
-    width: 100%;
-  }
-
-  main#write #spelling-area #spelling-choices {
-    width: 65%;
-  }
-  main#write #spelling-area #more-container {
-    width: 34%;
-  }
-}
-@media only screen and (max-width: 649px) {
-  nav li {
-    height: 4rem;
-  }
-
-  header#intro img {
-    width: 95%;
-  }
-}
-@media only screen and (max-width: 640px) {
-  body {
-    width: 100%;
-    padding: 5px;
-  }
-
-  button {
-    padding-top: 13px;
-    padding-bottom: 13px;
-  }
-
-  main#write form#writing fieldset#write-box {
-    margin: 0 0 10px;
-    width: 100%;
-  }
-  main#write form#writing fieldset#box-buttons {
-    margin-top: 0;
-    padding-top: 0;
-    height: auto;
-    border: solid 1px purple;
-    clear: both;
-    width: 100%;
-  }
-  main#write #spelling-area {
-    padding-top: 5px;
-    padding-bottom: 5px;
-  }
-  main#write #spelling-area #spelling-choices {
-    width: 100%;
-  }
-  main#write #spelling-area button#user-spelling {
-    padding-top: 10px;
-  }
-  main#write #spelling-area #more-container {
-    width: 100%;
-  }
-  main#write #spelling-area #more-words,
-  main#write #spelling-area #user-spelling {
-    display: inline-block;
-    padding: 13px 10px;
-  }
-  main#write #spelling-area #more-words {
-    margin-right: auto;
-  }
-  main#write #snippet-area {
-    margin: 0;
-  }
-  main#write #snippet-area .operation {
-    width: 100%;
-    margin: 0.1rem 0;
-  }
-  main#write #snippet-area #snippets li {
-    width: 100%;
-    margin: 0.15rem 0;
-  }
-  main#write #snippet-area #snippets li a {
-    padding-top: 13px;
-    padding-bottom: 13px;
   }
 }

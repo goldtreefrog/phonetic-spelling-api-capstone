@@ -100,7 +100,7 @@ function offerSpellings(curRow, misspellings) {
   }
 
   // If there are no spelling suggestions for the current word, display and speak message, increment curRow () and get out.
-  if (misspellings[curRow].replacements.length == 0) {
+  if (misspellings[curRow].replacements.length === 0) {
     let msgBegin = "We cannot find ";
     let msgEnd = " in our dictionary and have no suggestions. Click continue to skip to the next word.";
     let missWord = misspellings[curRow].mWord;
