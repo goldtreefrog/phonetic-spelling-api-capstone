@@ -36,9 +36,9 @@ The app's functionality includes:
 
 *   An area for the user to input his/her text.
 *   A function to read the user's text aloud.
-*   A spell checker which offers possible correct spellings.
-*   The ability for the user to save chunks of text for the duration of the session (since no database is involved - yet) and assign them to objects on the screen. Each such object will show the first few words of the text in that chunk.
-*   The ability for the user to append previously-saved chunks of text to the text writing/editing area so that such chunks can be strung together in new ways and the final result spoken aloud.
+*   A spell checker which offers possible spelling corrections.
+*   Text-to-speech for the spelling corrections offered when user puts the mouse over the words or tabs to them.
+*   Automatic replacement of the misspelled word with the correction the user chooses.
 
 ## Technology
 
@@ -58,6 +58,8 @@ App is built to be responsive across mobile, tablet, laptop, and desktop screen 
 This is v1.0 of the app, but future enhancements are expected to include:
 
 *   Option(s) to read the instructions and buttons to the user. (Remember the target audience is beginning spellers who probably do not read very well.)
-*   A "snippets" feature for temporarily storing words, phrases and longer text to new buttons, which the user can then click to speak them back. For example, the user could store "Mom" in one snippet, "Dad" in another, "I love you" in a third, and "I am hungry" in a fourth. After that, the user could make the computer say, "Mom, I am hungry" in just two clicks without having to retype anything.
+*   A "snippets" feature for storing words, phrases and longer text to new buttons, which the user can then click to speak them back. For example, the user could store "Mom" in one snippet, "Dad" in another, "I love you" in a third, and "I am hungry" in a fourth. After that, the user could make the computer say, "Mom, I am hungry" in just two clicks without having to retype anything.
 *   An attached database and login capabilities so that users can store their snippets for later sessions.
-*   Look up the meanings of selected word in English dictionary.
+*   The ability to look up the meanings of selected word in English dictionary.
+*   Spelling correction choices that are customized more for beginning and phonetic spellers.
+*   A personal user dictionary than can be edited (perhaps by a teacher or parent).
