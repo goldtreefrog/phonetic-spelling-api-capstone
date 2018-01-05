@@ -28,40 +28,27 @@ function sendToLanguageToolAPI(textToCheck) {
   };
 
   let url = "https://languagetool.org/api/v2/check";
-  $.getJSON(url, params, displayFeedback);
+  $.getJSON(url, params, parseLTResults);
 }
 
-// // Function: parseLTResults
-// function parseLTResults(data) {
-//   const misspellings = gatherMisspellingsAndSuggestions(data);
-//   displayFeedback(misspellings);
-// }
-
-// Function: gatherMisspellingsAndSuggestions
-// Gather the misspellings and spelling suggestions into an array
-function gatherMisspellingsAndSuggestions(data) {
+// Function: parseLTResults
+function parseLTResults(data) {
   const misspellings = [];
 
   $.each(data.matches, function(dataKey, dataValue) {
-    let dataOffset = dataValue.offset;
-    let dataLength = dataValue.length;
-    let misspelledWord = $("textarea")
+    let offs = dataValue.offset;
+    let len = dataValue.length;
+    let res = $("textarea")
       .val()
-      .substring(dataOffset, dataLength + dataOffset);
+      .substring(offs, len + offs);
 
     const repl = dataValue.replacements;
 
     // Push misspelled word and its offset into the misspellings array
     if (dataValue.shortMessage === "Spelling mistake") {
-      misspellings.push({ mWord: misspelledWord, offset: dataOffset, replacements: repl });
+      misspellings.push({ mWord: res, offset: offs, replacements: repl });
     }
   });
-  return misspellings;
-}
-
-// Function: displayFeedback
-function displayFeedback(data) {
-  let misspellings = gatherMisspellingsAndSuggestions(data);
 
   // Search for alternatives to misspelling and call function to display them
   if (misspellings.length > 0) {
